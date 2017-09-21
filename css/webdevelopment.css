@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.server-tier {
+    height: 400px;
+}
+
+.client-tier {
+    height: 400px;
+}
+
+.web-server {
+    background-color: #FF7474;
+    border: solid 1px #711616;
+    height: 100%;
+}
+
+.db-server {
+    background-color: #9EB2F3;
+    border: solid 1px #1F3271;
+    height: 100%;
+}
+
+.client-browser {
+    background-color: #BDDEA2;
+    border: solid 1px #1E320E;
+    height: 100%;
+}
+
+.network {
+    background-color: #c0c0c0;
+    height: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.button-col {
+    padding-top: 8px;
+    text-align: center;
+}
+
+.btn-fixed {
+    width: 80px;
+}
+
+.msg-panel {
+    background-color: white;
+    border: solid 1px black;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    z-index: 1000;
+    position: absolute;
+}
+
+.msg-title {
+     font-size: 10px;
+ }
+
+.msg-title-html {
+    padding: 1px;
+    background-color: #2B68C1;
+    color: white;
+}
+
+.msg-body {
+    font-size: 8px;
+}
+
+.msg-body-html {
+
+}

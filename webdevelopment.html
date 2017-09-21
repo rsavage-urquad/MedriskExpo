@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medrisk Expo 2017</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/webdevelopment.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row banner" id="banner">
+        <div class="col-md-12"><h2>MedRisk Expo 2017</h2></div>
+    </div>
+    <div class="row server-tier" id="serverTier">
+        <div class="col-md-5 web-server" id="webContainer">
+            <h3>Web Server</h3>
+            <div id="webServer"></div>
+        </div>
+        <div class="col-md-1 network"></div>
+        <div class="col-md-6 db-server" id="dbContainer">
+            <h3>Database Server</h3>
+            <div id="dbServer"></div>
+        </div>
+    </div>
+    <div class="row" id="network">
+        <div class="col-md-12 network"><h3>Network</h3></div>
+    </div>
+    <div class="row client-tier" id="clientTier">
+        <div class="col-md-4">
+            <h3>Control Center</h3>
+            <div class="row">
+                <div class="col-md-12 button-col">
+                    <button class="btn btn-default btn-fixed" onclick="webDevelopment.nextClicked()"><i class="fa fa-step-forward"></i> Next</button>
+                    <button class="btn btn-default btn-fixed" id="playStopButton" onclick="webDevelopment.playStopClicked()"><i class="fa fa-play" id="playStopIcon"></i> Play</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 client-browser" id="browserContainer">
+            <h3>Client Browser</h3>
+            <div id="clientBrowser"></div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/lodash.js"></script>
+<script src="js/FlowSimulator/DisplayObjects/Message.js"></script>
+<script src="js/FlowSimulator/DataObjects/Coordinate.js"></script>
+<script src="js/FlowSimulator/DataObjects/EntityObject.js"></script>
+<script src="js/FlowSimulator/DisplayObjects/FlowSimulator.js"></script>
+<script src="js/WebDevelopment/WebDevelopment.js"></script>
+
+</html>
