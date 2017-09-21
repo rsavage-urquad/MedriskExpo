@@ -1,12 +1,18 @@
 /**
  * FlowSimulator Object - Performs the Flow Simulation
  * @param {Array} entityArray - Array of EntityObject elements.
- * @param {Array} flowArray - Array of FlowObject elements.
+ * @param {Array} flowTaskArray - Array of FlowTask elements.
+ * @param {Array} messageArray - Array of Message elements.
+ * @param {string} descriptionArea - Id of "div" where descriptions will be displayed.
  * @constructor
  */
-var FlowSimulator = function (entityArray, flowArray) {
-    this.entityDict = this.loadEntityDict(entityArray);
-    this.flowArray = flowArray;
+var FlowSimulator = function (entityArray, flowTaskArray, messageArray, descriptionArea) {
+    this.entityDict = this.loadDictionary(this.entityDict, entityArray, "id");
+    this.flowTaskArray = flowTaskArray;
+    this.messageDict= this.loadDictionary(this.messageDict, messageArray, "id");
+    this.descriptionAreaObj = $("#" + descriptionArea);
+
+    this.currStep = -1;     // Initialized to -1 as "nextStep" will add one first.
 
     this.initialize();
 };
@@ -22,16 +28,19 @@ FlowSimulator.prototype.initialize = function() {
 };
 
 /**
- * loadEntityDict() - Loads the Entity Dictionary from the Array
- * @param {Array} entityArray - Entity Array
+ * loadDictionary() - Initializes and loads the supplied Dictionary from the Array
+ * @param {Object} dict - Dictionary object to be initialized/loaded
+ * @param {Array} arr - Entity Array
+ * @param {string} id - Name of Id Property to be used as Key.
  */
-FlowSimulator.prototype.loadEntityDict = function(entityArray) {
-    var realThis = this;
-    this.entityDict = {};
+FlowSimulator.prototype.loadDictionary = function(dict, arr, id) {
+    dict = {};
 
-    _.forEach(entityArray, function(item) {
-        realThis.entityDict[item.id] = item;
-    })
+    _.forEach(arr, function(item) {
+        dict[item[id]] = item;
+    });
+
+    return dict;
 };
 
 // ************************************************************************************************
@@ -52,16 +61,45 @@ FlowSimulator.prototype.processResize = function() {
  * nextStep() - Process the next task of the Flow Array
  */
 FlowSimulator.prototype.nextStep = function() {
+    var flowTask;
+    var message;
+    var sourceCenter;
+    var destCenter;
+    var start;
+    var end;
 
-    // TODO: RS - Advance script
-    // TODO: RS - What if no more scripts?
-    var msgBody ="&lt;html&gt;<br>&lt;head&gt;&lt;title&gt;...&lt;/title&gt;&lt;/head&gt;<br>&lt;body&gt;<br>&nbsp;&nbsp;&lt;div&gt;...&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;";
+    this.currStep++;
+    if (this.currStep > (this.flowTaskArray.length - 1)) {
+        this.reinitializeDisplay();
+        this.currStep = 0;
+    }
 
-    var elem = new Message("testDiv", 80, 120, "msg-panel", "HTML", "msg-title", "msg-title-html", msgBody, "msg-body msg-body-html", { x:500, y: 400 }, { x: 100, y: 200 }, 1500);
-    elem.animate({ x:500, y: 400 }, { x: 100, y: 200 }, 1500, true, 1000);
+    flowTask = this.flowTaskArray[this.currStep];
+    message = this.messageDict[flowTask.messageId];
+    this.displayDescription(flowTask.description);
 
+    sourceCenter = this.entityDict[flowTask.action.source].getCenter();
+    start = this.computeCoordinate(sourceCenter, message.height, message.width);
+
+    if (flowTask.action.type === "D") {
+        // Display the Message
+        message.display(start, flowTask.action.removeOnComplete, flowTask.action.removeDelay);
+    }
+    else {
+        // Animate the message
+        destCenter = this.entityDict[flowTask.action.destination].getCenter();
+        end = this.computeCoordinate(destCenter, message.height, message.width);
+        message.animate(start, end, flowTask.action.duration, flowTask.action.removeOnComplete, flowTask.action.removeDelay);
+    }
 };
 
+/**
+ * reinitializeRequestReceived() - Handle the Reinitialize Display request
+ */
+FlowSimulator.prototype.reinitializeRequestReceived = function() {
+    this.reinitializeDisplay();
+    this.currStep = -1;
+};
 
 // ************************************************************************************************
 // Data Activities Section
@@ -72,7 +110,45 @@ FlowSimulator.prototype.nextStep = function() {
 // Display Processing Section
 // ************************************************************************************************
 
+/**
+ * reinitializeDisplay() - Reinitialize the display by removing any Message that was possibly
+ * displayed as part of a Flow Task.  Also clear the Description area.
+ */
+FlowSimulator.prototype.reinitializeDisplay = function() {
+    _.forEach(this.flowTaskArray, function(item) {
+        var obj = $("#" + item.messageId);
+        if (obj.length > 0) {
+            obj.remove();
+        }
+    });
+
+    // TODO: RS - Clear the Description area
+};
+
+FlowSimulator.prototype.displayDescription = function(description) {
+    var elem = $("<div>");
+    elem.html(description);
+    this.descriptionAreaObj.append(elem);
+
+    // TODO: RS - Scroll not Working!
+    this.descriptionAreaObj.scrollTop(this.descriptionAreaObj.scrollHeight);
+};
+
 // ************************************************************************************************
 // Helpers Section
 // ************************************************************************************************
 
+/**
+ * computeCoordinate() - Compute a messages coordinates based on the Source/Destination center point and
+ * the Messages height and width.
+ * @param targetCenter - Identifies which center Coordinates for the target EntityObject.
+ * @param msgHeight - Message's height
+ * @param msgWidth - Message's width
+ * @returns {Coordinate} - Message offset coordinate.
+ */
+FlowSimulator.prototype.computeCoordinate = function(targetCenter, msgHeight, msgWidth) {
+    var x = Math.floor(targetCenter.x -(msgWidth / 2));
+    var y = Math.floor(targetCenter.y -(msgHeight / 2));
+
+    return new Coordinate(x, y);
+};

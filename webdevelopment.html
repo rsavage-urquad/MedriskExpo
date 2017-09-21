@@ -28,18 +28,27 @@
         <div class="col-md-12 network"><h3>Network</h3></div>
     </div>
     <div class="row client-tier" id="clientTier">
-        <div class="col-md-4">
-            <h3>Control Center</h3>
+        <div class="col-md-4 full-height" id="controlCenter">
             <div class="row">
-                <div class="col-md-12 button-col">
-                    <button class="btn btn-default btn-fixed" onclick="webDevelopment.nextClicked()"><i class="fa fa-step-forward"></i> Next</button>
-                    <button class="btn btn-default btn-fixed" id="playStopButton" onclick="webDevelopment.playStopClicked()"><i class="fa fa-play" id="playStopIcon"></i> Play</button>
+                <div class="col-md-6">
+                    <h3>Control Center</h3>
+                </div>
+                <div class="col-md-6 button-col">
+                    <button class="btn btn-default btn-fixed" onclick="webDevelopment.restartClicked()"><i class="fa fa-fast-backward"></i></button>
+                    <button class="btn btn-default btn-fixed" onclick="webDevelopment.nextClicked()"><i class="fa fa-step-forward"></i></button>
+                    <button class="btn btn-default btn-fixed" id="playStopButton" onclick="webDevelopment.playStopClicked()"><i class="fa fa-play" id="playStopIcon"></i></button>
+
                 </div>
             </div>
+            <div id="descriptionDisplay" class="description-area" style="background-color: azure;"></div>
         </div>
-        <div class="col-md-8 client-browser" id="browserContainer">
+        <div class="col-md-2 client-browser client-browser-left" id="browserContainer">
             <h3>Client Browser</h3>
             <div id="clientBrowser"></div>
+        </div>
+        <div class="col-md-6 client-browser client-browser-right" id="browserDisplayContainer">
+            <h3>&nbsp;</h3>
+            <div id="clientBrowserDisplay"></div>
         </div>
     </div>
 </div>
@@ -48,9 +57,14 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/lodash.js"></script>
+<script src="data/WebDevelopment/Entities.js"></script>
+<script src="data/WebDevelopment/Messages.js"></script>
+<script src="data/WebDevelopment/FlowTasks.js"></script>
 <script src="js/FlowSimulator/DisplayObjects/Message.js"></script>
 <script src="js/FlowSimulator/DataObjects/Coordinate.js"></script>
 <script src="js/FlowSimulator/DataObjects/EntityObject.js"></script>
+<script src="js/FlowSimulator/DataObjects/FlowTask.js"></script>
+<script src="js/FlowSimulator/DataObjects/ActionObject.js"></script>
 <script src="js/FlowSimulator/DisplayObjects/FlowSimulator.js"></script>
 <script src="js/WebDevelopment/WebDevelopment.js"></script>
 

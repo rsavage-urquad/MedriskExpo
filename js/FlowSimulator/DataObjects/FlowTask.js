@@ -1,16 +1,26 @@
 /**
- * EntityObject Object - Represents an Entity involved in a Flow Simulation.  This is basically
- * the container
- * @param {string} objDivId - Id of the Entity's "div"
- * @param {string} containerId - Id of the Entities container (generally used for resize).
+ * FlowTask Object - Represents the Plow Tasks that will be processed.
+ * @param {string} id - Id
+ * @param {string} name - Name
+ * @param {string} description - Description text (may include HTML)
+ * @param {string} actionId - Action Id
+ * @param {string} type - Action Type ("M"=Move, "D"=Display)
+ * @param {string} source - Id of Entity Object that will be the Source
+ * @param {string} destination - Id of Entity Object that will be the Destination
+ * @param {number} duration - Animation duration (ms)
+ * @param {boolean} removeOnComplete - Should Message be removed on Task completion
+ * @param {number} removeDelay - Removal delay (ms) if removeOnComplete is true.
+ * @param {string} messageId - Message Id
+ * @param {number} postTaskDelay - When in Play Mode, the amount of time to delay until next task.
  * @constructor
  */
-var EntityObject = function (objDivId, containerId) {
-    this.id = objDivId;
-    this.object = $("#" + objDivId);
-    this.container = $("#" + containerId);
-    this.centerX = 0;
-    this.centerY = 0;
+var FlowTask = function (id, name, description, actionId, type, source, destination, duration, removeOnComplete, removeDelay, messageId, postTaskDelay) {
+    this.id = this.prepareValue(id, "", null);
+    this.name = this.prepareValue(name, "", null);
+    this.description = this.prepareValue(description, "", null);
+    this.action = new ActionObject(actionId, type, source, destination, duration, removeOnComplete, removeDelay);
+    this.messageId = this.prepareValue(messageId, "", null);
+    this.postTaskDelay = this.prepareValue(postTaskDelay, 0, null);
 };
 
 // ************************************************************************************************
@@ -19,56 +29,28 @@ var EntityObject = function (objDivId, containerId) {
 
 /**
  * populate() - Populate an object based on the contents of another object (property values).
- * @param {object} eo - EntityObject Object.
+ * @param {object} ft - FlowTask Object.
  */
-EntityObject.prototype.populate = function(eo) {
-    this.id = this.prepareValue(eo.id, "", null);
-    this.object = this.prepareValue(eo.object, {}, null);
-    this.container = this.prepareValue(eo.container, {}, null);
+FlowTask.prototype.populate = function(ft) {
+    this.id = this.prepareValue(ft.id, "", null);
+    this.name = this.prepareValue(ft.name, "", null);
+    this.description = this.prepareValue(ft.description, "", null);
+    this.action = this.prepareValue(ft.action, new ActionObject(), null);
+    this.messageId = this.prepareValue(ft.messageId, "", null);
+    this.postTaskDelay = this.prepareValue(ft.postTaskDelay, 0, null);
 };
 
 // ************************************************************************************************
 // Events Section
 // ************************************************************************************************
 
-/**
- * resize() - Process a resize event by recomputing the center point.
- */
-EntityObject.prototype.resize = function() {
-    var contHeight = this.container.height();
-    var pos = this.object.position();
-    var offset = this.object.offset();
-    var bottomPadding = 20;
-    var myHeight = (contHeight - pos.top) - bottomPadding;
-
-    // Make sure height is at least 1
-    myHeight = (myHeight < 1) ? 1 : myHeight;
-
-    var centerX = Math.floor(this.container.width() / 2);
-    var centerY = Math.floor(myHeight / 2);
-
-    // Set Height and center Position
-    this.object.height(myHeight);
-    this.centerX = Math.floor(offset.left + centerX);
-    this.centerY = Math.floor(offset.top + centerY);
-};
-
 // ************************************************************************************************
 // Data Activities Section
 // ************************************************************************************************
 
-/**
- * getCenter() - Returns the Center Coordinate.
- * @returns {Coordinate} - Center location.
- */
-EntityObject.prototype.getCenter = function() {
-    return new Coordinate(this.centerX, this.centerY)
-};
-
 // ************************************************************************************************
 // Display Processing Section
 // ************************************************************************************************
-
 
 // ************************************************************************************************
 // Helpers Section
@@ -82,7 +64,7 @@ EntityObject.prototype.getCenter = function() {
  * @param func - (Optional - if not needed, pass null).  Function to act on valid "prop".
  * @returns {*} - Value or default value
  */
-EntityObject.prototype.prepareValue = function(prop, defaultValue, func) {
+FlowTask.prototype.prepareValue = function(prop, defaultValue, func) {
     if ((typeof prop === "undefined") || (prop === null)) {
         // provided "prop" in not valid, use default
         return defaultValue;

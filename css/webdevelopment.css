@@ -22,10 +22,23 @@ body {
     height: 100%;
 }
 
+.description-area {
+    overflow: scroll;
+}
+
 .client-browser {
     background-color: #BDDEA2;
-    border: solid 1px #1E320E;
+    border-top: solid 1px #1E320E;
+    border-bottom: solid 1px #1E320E;
     height: 100%;
+}
+
+.client-browser-left {
+    border-left: solid 1px #1E320E;
+}
+
+.client-browser-right {
+    border-right: solid 1px #1E320E;
 }
 
 .network {
@@ -38,12 +51,12 @@ body {
 }
 
 .button-col {
-    padding-top: 8px;
-    text-align: center;
+    padding-top: 12px;
+    text-align: right;
 }
 
 .btn-fixed {
-    width: 80px;
+    width: 35px;
 }
 
 .msg-panel {
@@ -66,10 +79,27 @@ body {
     color: white;
 }
 
+.msg-title-css {
+    padding: 1px;
+    background-color: #D4040E;
+    color: white;
+}
+
+.msg-title-browser {
+    font-size: 12px;
+    background-color: #d0d0d0;
+}
+
 .msg-body {
     font-size: 8px;
 }
 
-.msg-body-html {
+.msg-body-browser {
+    font-size: 10px;
+}
 
+.msg-body-html {
+}
+
+.msg-body-css {
 }

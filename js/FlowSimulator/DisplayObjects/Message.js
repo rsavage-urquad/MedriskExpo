@@ -13,15 +13,15 @@
  */
 var Message = function (id, height, width, panelClass, title, titleClass, titleTextClass, body, bodyClass) {
     this.panelObj = null;
-    this.id = id;
-    this.height = height;
-    this.width = width;
-    this.panelClass = panelClass;
-    this.title = title;
-    this.titleClass = titleClass;
-    this.titleTextClass = titleTextClass;
-    this.body = body;
-    this.bodyClass = bodyClass;
+    this.id = this.prepareValue(id, "", null);
+    this.height = this.prepareValue(height, 0, null);
+    this.width = this.prepareValue(width, 0, null);
+    this.panelClass = this.prepareValue(panelClass, "", null);
+    this.title = this.prepareValue(title, "", null);
+    this.titleClass = this.prepareValue(titleClass, "", null);
+    this.titleTextClass = this.prepareValue(titleTextClass, "", null);
+    this.body = this.prepareValue(body, "", null);
+    this.bodyClass = this.prepareValue(bodyClass, "", null);
 
     this.initialize();
 };
@@ -63,10 +63,6 @@ Message.prototype.initialize = function() {
  * @param {object} msg - Message Object.
  */
 Message.prototype.populate = function(msg) {
-    this.id = this.prepareValue(eo.id, "", null);
-    this.object = this.prepareValue(eo.object, {}, null);
-    this.container = this.prepareValue(eo.container, {}, null);
-
     this.panelObj = this.prepareValue(msg.panelObj, {}, null);
     this.id = this.prepareValue(msg.id, "", null);
     this.height = this.prepareValue(msg.height, 0, null);
@@ -84,11 +80,9 @@ Message.prototype.populate = function(msg) {
 // Events Section
 // ************************************************************************************************
 
-
 // ************************************************************************************************
 // Data Activities Section
 // ************************************************************************************************
-
 
 // ************************************************************************************************
 // Display Processing Section
@@ -123,7 +117,50 @@ Message.prototype.animate = function(start, end, duration, removeOnComplete, rem
     );
 };
 
+/**
+ * display() - Displays the Message in the desired location
+ * @param {Coordinate} loc - Location to display the message
+ * @param {boolean} removeOnComplete - Should Message object be removed on completion.
+ * @param {number} removeDelay - amount of time to delay before remove (if removeOnComplete is true)
+ */
+Message.prototype.display = function(loc, removeOnComplete, removeDelay) {
+    var realThis = this;
+
+    $("body").append(this.panelObj);
+    this.panelObj.offset({top: loc.y, left: loc.x });
+    if (removeOnComplete) {
+        setTimeout(function() {
+            realThis.panelObj.remove();
+        }, removeDelay);
+    }
+};
+
 
 // ************************************************************************************************
 // Helpers Section
 // ************************************************************************************************
+
+/**
+ * prepareValue() - Prepares a Property to be either a default value (if undefined or null) or
+ * (optionally) the result of a passed function.
+ * @param prop - value to be acted upon.
+ * @param defaultValue - Default value, if "prop" is undefined or null.
+ * @param func - (Optional - if not needed, pass null).  Function to act on valid "prop".
+ * @returns {*} - Value or default value
+ */
+Message.prototype.prepareValue = function(prop, defaultValue, func) {
+    if ((typeof prop === "undefined") || (prop === null)) {
+        // provided "prop" in not valid, use default
+        return defaultValue;
+    }
+    else {
+        if (typeof func === "function") {
+            // Function was provided, so use it
+            return func(prop)
+        }
+        else {
+            // Just pass value back.
+            return prop;
+        }
+    }
+};

@@ -11,8 +11,6 @@ var WebDevelopment = function () {
     this.clientTier = $("#clientTier");
     this.playMode = false;
 
-
-
     // Windows Resize Support
     this.resizeTime = {};
     this.resizeTimeout = false;
@@ -30,14 +28,11 @@ var WebDevelopment = function () {
  */
 WebDevelopment.prototype.initialize = function() {
     var realThis = this;
-    var entityArray = [];
-    var flowArray = [];
+    var entityArray = this.loadEntities();
+    var flowTaskArray = this.loadFlowTasks();
+    var messageArray = this.loadMessages();
 
-    entityArray.push(new EntityObject("webServer", "webContainer"));
-    entityArray.push(new EntityObject("dbServer", "dbContainer"));
-    entityArray.push(new EntityObject("clientBrowser", "browserContainer"));
-
-    this.flowSimulator = new FlowSimulator(entityArray, flowArray);
+    this.flowSimulator = new FlowSimulator(entityArray, flowTaskArray, messageArray, "descriptionDisplay");
 
     this.processResize();
 
@@ -64,7 +59,6 @@ WebDevelopment.prototype.initialize = function() {
 WebDevelopment.prototype.nextClicked = function() {
     this.playMode = false;
     this.updatePlayStopButton();
-
     this.flowSimulator.nextStep();
 };
 
@@ -75,9 +69,64 @@ WebDevelopment.prototype.playStopClicked = function() {
     // TODO: RS - Auto Play Mode
 };
 
+/**
+ * restartClicked() - Handle the Restart click event.
+ */
+WebDevelopment.prototype.restartClicked = function() {
+    this.playMode = false;
+    this.updatePlayStopButton();
+    this.flowSimulator.reinitializeRequestReceived();
+};
+
 // ************************************************************************************************
 // Data Activities Section
 // ************************************************************************************************
+
+/**
+ * loadEntities() - Loads and returns the Entity Array.  Currently loading from JavaScript "var", but
+ * can be refactored to retrieve from server.
+ * @returns {Array} Populated Entity Array
+ */
+WebDevelopment.prototype.loadEntities = function() {
+    var entityArray = [];
+
+    _.forEach(Entities, function(item) {
+        entityArray.push(new EntityObject(item.id, item.containerId));
+    });
+
+    return entityArray;
+};
+
+/**
+ * loadFlowTasks() - Loads and returns the Flow Task Array.  Currently loading from JavaScript "var", but
+ * can be refactored to retrieve from server.
+ * @returns {Array} Populated Flow Task Array
+ */
+WebDevelopment.prototype.loadFlowTasks = function() {
+    var flowTaskArray = [];
+
+    _.forEach(FlowTasks, function(item) {
+        flowTaskArray.push(new FlowTask(item.id, item.name, item.description, item.actionId, item.type, item.source,
+            item.destination, item.duration, item.removeOnComplete, item.removeDelay, item.messageId, item.postTaskDelay));
+    });
+
+    return flowTaskArray;
+};
+
+/**
+ * loadMessages() - Loads and returns the Message Array.  Currently loading from JavaScript "var", but
+ * can be refactored to retrieve from server.
+ * @returns {Array} Populated Messages Array
+ */
+WebDevelopment.prototype.loadMessages = function() {
+    var messageArray = [];
+
+    _.forEach(Messages, function(item) {
+        messageArray.push(new Message(item.id, item.height, item.width, item.panelClass, item.title, item.titleClass, item.titleTextClass, item.body, item.bodyClass));
+    });
+
+    return messageArray;
+};
 
 
 // ************************************************************************************************
@@ -88,16 +137,13 @@ WebDevelopment.prototype.updatePlayStopButton = function() {
     var playStopButtonObj = $("#playStopButton");
     var playStopIconObj = $("<i class='fa'>");
     var icon = "fa-stop";
-    var btnText = " Stop";
 
     if (!this.playMode) {
         icon = "fa-play";
-        btnText = " Play";
     }
-
-    playStopButtonObj.text(btnText);
+    playStopButtonObj.empty();
     playStopIconObj.addClass(icon);
-    playStopButtonObj.prepend(playStopIconObj);
+    playStopButtonObj.append(playStopIconObj);
 };
 
 
@@ -137,4 +183,5 @@ WebDevelopment.prototype.processResize = function() {
 
     // Notify Flow Simulator
     this.flowSimulator.processResize();
+    this.flowSimulator.reinitializeRequestReceived();
 };
