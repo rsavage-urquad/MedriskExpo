@@ -85,9 +85,51 @@ body {
     color: white;
 }
 
+.msg-title-js {
+    padding: 2px;
+    background-color: #14751A;
+    color: white;
+}
+
+.msg-title-json {
+    padding: 2px;
+    background-color: #683883;
+    color: white;
+}
+
 .msg-title-browser {
     font-size: 12px;
-    background-color: #d0d0d0;
+    background-color: black;
+    color: white;
+}
+.msg-title-httpget {
+    padding: 2px;
+    background-color: #FF8E31;
+    color: white;
+}
+
+.msg-title-httppost {
+    padding: 2px;
+    background-color: #9A7F00;
+    color: white;
+}
+
+.msg-title-sqlsp {
+    padding: 2px;
+    background-color: #3A8184;
+    color: white;
+}
+
+.msg-title-sql {
+    padding: 2px;
+    background-color: #690104;
+    color: white;
+}
+
+.msg-title-sqlresp {
+    padding: 2px;
+    background-color: #495F92;
+    color: white;
 }
 
 .msg-body {
@@ -102,4 +144,22 @@ body {
 }
 
 .msg-body-css {
+}
+
+.msg-body-http {
+}
+
+.msg-body-json {
+}
+
+.msg-body-js {
+}
+
+.msg-body-sqlsp {
+}
+
+.msg-body-sql {
+}
+
+.msg-body-sqlresp {
 }
