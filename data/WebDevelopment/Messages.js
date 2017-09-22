@@ -160,6 +160,37 @@ var Messages = [
         bodyClass: "msg-body msg-body-css"
     },
     {
+        id: "JavaScriptResponse",
+        height: 120,
+        width: 180,
+        panelClass: "msg-panel",
+        title: "JavaScript",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-js",
+        body: "var Todo = function(area) {<br/>" +
+            "&nbsp; this.contentArea = area;<br/>" +
+            "&nbsp; this.user = null;<br/>" +
+            "&nbsp; this.tasks = [];<br/>" +
+            "}<br/>" +
+            "<br/>" +
+            "Todo.prototype.closeTask(taskId) {<br/>" +
+            "&nbsp; var realThis = this;<br/>" +
+            "&nbsp; var url = &quot;/api/Todo/Close/&quot; + taskId;<br/>" +
+            "<br/>" +
+            "&nbsp; $.ajax({<br/>" +
+            "&nbsp;&nbsp;&nbsp; type: &quot;POST&quot;,<br/>" +
+            "&nbsp;&nbsp;&nbsp; url: url,<br/>" +
+            "&nbsp;&nbsp;&nbsp; datatype: &quot;json&quot;,<br/>" +
+            "&nbsp;&nbsp;&nbsp; contentType: &quot;application/json; charset=utf-8&quot;,<br/>" +
+            "&nbsp;&nbsp;&nbsp; success: function (data) {<br/>" +
+            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Update the display<br/>" +
+            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; realThis.Update(taskId);<br/>" +
+            "&nbsp;&nbsp;&nbsp; }<br/>" +
+            "&nbsp; });<br/>" +
+            "}",
+        bodyClass: "msg-body msg-body-css"
+    },
+    {
         id: "JSONLoginResponse",
         height: 120,
         width: 180,
@@ -168,9 +199,9 @@ var Messages = [
         titleClass: "msg-title",
         titleTextClass: "msg-title-json",
         body: "resp: {<br/>" +
-            "&nbsp;&nbsp;isValid: false<br/>" +
-            "&nbsp;&nbsp;numTries: 1<br/>" +
-            "&nbsp;&nbsp;tamperHash: yr6s6djf9kk3jl235ww2mspan986d0<br/>}",
+            "&nbsp;&nbsp;isValid: false,<br/>" +
+            "&nbsp;&nbsp;numTries: 1,<br/>" +
+            "&nbsp;&nbsp;tamperHash: &quot;yr6s6djf9kk3jl235ww2mspan986d0&quot;<br/>}",
         bodyClass: "msg-body msg-body-json"
     },
     {
@@ -222,5 +253,101 @@ var Messages = [
         body: "<div style='margin-top: 3px;'><span style='width: 50px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>UserId</span><span style='width: 200px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>UserName</span></div>" +
         "<div><span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>783</span><span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Homer Simpson</span></div>",
         bodyClass: "msg-body msg-body-sqlresp"
+    },
+    {
+        id: "SQLGetTasks",
+        height: 100,
+        width: 130,
+        panelClass: "msg-panel",
+        title: "SQL",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-sql",
+        body: "<span style='color: blue'>SELECT</span><br/>" +
+            "&nbsp;&nbsp; TaskId,<br/>" +
+            "&nbsp;&nbsp; TaskName,<br/>" +
+            "&nbsp;&nbsp; Status<br/>" +
+            "<span style='color: blue'>FROM</span> TaskInfo<br/>" +
+            "<span style='color: blue'>WHERE</span> UserId = 783",
+        bodyClass: "msg-body msg-body-sql"
+    },
+    {
+        id: "SQLGetTasksResponse",
+        height: 90,
+        width: 350,
+        panelClass: "msg-panel",
+        title: "SQL Response",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-sqlresp",
+        body: "<div style='margin-top: 3px;'>" +
+        "<span style='width: 50px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>TaskId</span>" +
+        "<span style='width: 200px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>TaskName</span>" +
+        "<span style='width: 60px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>Status</span>" +
+        "</div>" +
+        "<div>" +
+        "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87554</span>" +
+        "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Eat Doughnuts</span>" +
+        "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
+        "</div>" +
+        "<div>" +
+        "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87555</span>" +
+        "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Drink at Moe&apos;s</span>" +
+        "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
+        "</div>" +
+        "<div>" +
+        "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87558</span>" +
+        "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Kill the boy</span>" +
+        "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
+        "</div>",
+        bodyClass: "msg-body msg-body-sqlresp"
+    },
+    {
+        id: "TasksPage",
+        height: 260,
+        width: 390,
+        panelClass: "msg-panel",
+        title: "Web Browser",
+        titleClass: "msg-title-browser",
+        titleTextClass: "",
+        body: "<div style='padding: 2px; background-color: gainsboro;'>Url: <span style='width: 300px; display: inline-block; border: solid 1px black;background-color: white;'>https://www.todo.com</span></div><br/>" +
+        "<div style='padding-left: 5px; color: darkblue; font-style:italic; font-size: 12px;'>To Do for Homer Simpson</div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Eat Doughnuts</span><span style='width: 36px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Close</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Drink at Moe's</span><span style='width: 36px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Close</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Kill The boy</span><span style='width: 36px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Close</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'><span style='width: 180px; display: inline-block; background-color: #FFFACD; border: solid 1px black;'>&nbsp;</span></span><span style='width: 36px; display: inline-block; text-align: center; background-color: mediumblue; color: white; padding: 1px; border: solid 1px black;'>Add</span></div>",
+        bodyClass: "msg-body-browser"
+    },
+    {
+        id: "CloseTaskRequest",
+        height: 120,
+        width: 180,
+        panelClass: "msg-panel",
+        title: "HTTP",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-httpget",
+        body: "GET https://www.todo.com/api/ToDo/Close/87554 /HTTP/1.1<br/>" +
+        "<b>Client</b><br/>" +
+        "&nbsp;&nbsp; Accept: text/html, application/xhtml+xml, */*<br/>" +
+        "&nbsp;&nbsp; Accept-Encoding: gzip, deflate<br/>" +
+        "&nbsp;&nbsp; Accept-Language: en-US<br/>" +
+        "&nbsp;&nbsp; User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko<br/>" +
+        "<b>Cookies</b><br/>" +
+        "&nbsp; Cookie<br/>" +
+        "&nbsp;&nbsp;&nbsp; ASP.NET_SessionId=yr6rt3losu8dhy7",
+        bodyClass: "msg-body msg-body-http"
+    },
+    {
+        id: "JSONCloseTaskResponse",
+        height: 120,
+        width: 180,
+        panelClass: "msg-panel",
+        title: "JSON",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-json",
+        body: "resp: {<br/>" +
+        "&nbsp;&nbsp;requestType: &quot;C&quot;,<br/>" +
+        "&nbsp;&nbsp;taskId: 87554,<br/>" +
+        "&nbsp;&nbsp;success: true<br/>}",
+        bodyClass: "msg-body msg-body-json"
     }
+
 ];

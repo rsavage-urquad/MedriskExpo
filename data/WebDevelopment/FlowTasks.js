@@ -212,9 +212,34 @@ var FlowTasks = [
         messageId: "SQLSPLoginResponseGood",
         postTaskDelay: 0
     },
-
-    /* Get Tasks */
-
+    {
+        id: "GetTaskInfo",
+        name: "Get Task Info",
+        description: "Web server send requests to Database for the user's Task information.",
+        actionId: 1,
+        type: "A",
+        source: "webServer",
+        destination: "dbServer",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 500,
+        messageId: "SQLGetTasks",
+        postTaskDelay: 0
+    },
+    {
+        id: "TaskInfoResponse",
+        name: "ask Info Response",
+        description: "Database server responds with the requested Task information.",
+        actionId: 1,
+        type: "A",
+        source: "dbServer",
+        destination: "webServer",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 500,
+        messageId: "SQLGetTasksResponse",
+        postTaskDelay: 0
+    },
     {
         id: "HTMLResponse",
         name: "HTML Response",
@@ -242,14 +267,68 @@ var FlowTasks = [
         removeDelay: 1000,
         messageId: "CSSResponse",
         postTaskDelay: 500
-    }
+    },
+    {
+        id: "JavaScriptResponse",
+        name: "JavaScript Response",
+        description: "JavaScript code will add \"client-side\" logic.",
+        actionId: 3,
+        type: "A",
+        source: "webServer",
+        destination: "clientBrowser",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 1000,
+        messageId: "JavaScriptResponse",
+        postTaskDelay: 500
+    },
+    {
+        id: "TasksPage",
+        name: "Tasks Page",
+        description: "Task Page rendered on the web browser.User enters URL and hits enter.",
+        actionId: 1,
+        type: "D",
+        source: "clientBrowserDisplay",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "TasksPage",
+        postTaskDelay: 2000
+    },
+    {
+        id: "CloseTaskRequest",
+        name: "Close Task Request",
+        description: "Browser calls Web API to mark a Task as closed.",
+        actionId: 1,
+        type: "A",
+        source: "clientBrowser",
+        destination: "webServer",
+        duration: 1500,
+        removeOnComplete: false,
+        removeDelay: 1000,
+        messageId: "CloseTaskRequest",
+        postTaskDelay: 500
+    },
 
-    /* Display To do List */
-    /* User completed item */
-    /* Post to Server */
     /* Update Database */
     /* Database Response */
-    /* Json Response to Browser */
+
+    {
+        id: "JSONCloseTaskResponse",
+        name: "JSON Close Task Response",
+        description: "Response from Web Server indicating close Task succeeded.",
+        actionId: 1,
+        type: "A",
+        source: "webServer",
+        destination: "clientBrowser",
+        duration: 1500,
+        removeOnComplete: false,
+        removeDelay: 500,
+        messageId: "JSONCloseTaskResponse",
+        postTaskDelay: 0
+    }
+
     /* Render change on Browser */
     /* User Adds Item */
     /* Post to Server */
