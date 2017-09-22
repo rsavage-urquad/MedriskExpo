@@ -122,16 +122,29 @@ FlowSimulator.prototype.reinitializeDisplay = function() {
         }
     });
 
-    // TODO: RS - Clear the Description area
+    // Clear the Description area
+    this.clearDescription();
 };
 
+/**
+ * displayDescription() - Display the provided description in the description area.
+ * @param {string} description - Description to display.
+ */
 FlowSimulator.prototype.displayDescription = function(description) {
-    var elem = $("<div>");
+    var elem = $("<li>");
     elem.html(description);
     this.descriptionAreaObj.append(elem);
+    var scrollHeight = this.descriptionAreaObj.prop("scrollHeight");
 
-    // TODO: RS - Scroll not Working!
-    this.descriptionAreaObj.scrollTop(this.descriptionAreaObj.scrollHeight);
+    // Scroll to bottom of area
+    this.descriptionAreaObj.scrollTop(scrollHeight);
+};
+
+/**
+ * clearDescription() - Clear the description area.
+ */
+FlowSimulator.prototype.clearDescription = function() {
+    this.descriptionAreaObj.empty();
 };
 
 // ************************************************************************************************

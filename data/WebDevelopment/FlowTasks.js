@@ -5,7 +5,7 @@ var FlowTasks = [
     {
         id: "LoginPage",
         name: "Login Page",
-        description: "User Logs In to application",
+        description: "User received login page",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -14,6 +14,20 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "LoginPage",
+        postTaskDelay: 2000
+    },
+    {
+        id: "LoginPageFilledIn",
+        name: "Login Page Filled In",
+        description: "User enters credentials and \"Submits\" info",
+        actionId: 1,
+        type: "D",
+        source: "clientBrowserDisplay",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "LoginPageFilledIn",
         postTaskDelay: 2000
     },
     {
@@ -36,7 +50,7 @@ var FlowTasks = [
         description: "Cascading Style Sheet provides display style instructions to the Client's Web Browser",
         actionId: 3,
         type: "A",
-        source: "dbServer",
+        source: "webServer",
         destination: "clientBrowser",
         duration: 1500,
         removeOnComplete: true,

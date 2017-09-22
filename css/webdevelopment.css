@@ -23,7 +23,7 @@ body {
 }
 
 .description-area {
-    overflow: scroll;
+    overflow-y: auto;
 }
 
 .client-browser {
@@ -74,13 +74,13 @@ body {
  }
 
 .msg-title-html {
-    padding: 1px;
+    padding: 2px;
     background-color: #2B68C1;
     color: white;
 }
 
 .msg-title-css {
-    padding: 1px;
+    padding: 2px;
     background-color: #D4040E;
     color: white;
 }
