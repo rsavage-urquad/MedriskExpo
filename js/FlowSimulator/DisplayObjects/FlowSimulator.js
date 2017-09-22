@@ -1,16 +1,24 @@
 /**
+ * FlowSimulator.js
+ * Author: Roland Savage
+ * (c) 2017 - Roland Savage
+ */
+
+/**
  * FlowSimulator Object - Performs the Flow Simulation
  * @param {Array} entityArray - Array of EntityObject elements.
  * @param {Array} flowTaskArray - Array of FlowTask elements.
  * @param {Array} messageArray - Array of Message elements.
  * @param {string} descriptionArea - Id of "div" where descriptions will be displayed.
+ * @param {string} descriptionElementType - DOM Element type for the description.
  * @constructor
  */
-var FlowSimulator = function (entityArray, flowTaskArray, messageArray, descriptionArea) {
+var FlowSimulator = function (entityArray, flowTaskArray, messageArray, descriptionArea, descriptionElementType) {
     this.entityDict = this.loadDictionary(this.entityDict, entityArray, "id");
     this.flowTaskArray = flowTaskArray;
     this.messageDict= this.loadDictionary(this.messageDict, messageArray, "id");
     this.descriptionAreaObj = $("#" + descriptionArea);
+    this.descriptionElementType = descriptionElementType;
 
     this.currStep = -1;     // Initialized to -1 as "nextStep" will add one first.
 
@@ -74,13 +82,16 @@ FlowSimulator.prototype.nextStep = function() {
         this.currStep = 0;
     }
 
+    // Get the current Task and Message details
     flowTask = this.flowTaskArray[this.currStep];
     message = this.messageDict[flowTask.messageId];
-    this.displayDescription(flowTask.description);
 
+    // Determine the Display/Starting position
     sourceCenter = this.entityDict[flowTask.action.source].getCenter();
     start = this.computeCoordinate(sourceCenter, message.height, message.width);
 
+    // Display or Animate the Message (and display the Description)
+    this.displayDescription(flowTask.description);
     if (flowTask.action.type === "D") {
         // Display the Message
         message.display(start, flowTask.action.removeOnComplete, flowTask.action.removeDelay);
@@ -94,12 +105,46 @@ FlowSimulator.prototype.nextStep = function() {
 };
 
 /**
+ * initiatePlay() - Initiate the Play functionality yto loop through the Tasks.  The loop will stop when the
+ * "playMode" property is set to false.  At this time
+ * @param callbackThis
+ * @param stopCallback
+ */
+FlowSimulator.prototype.initiatePlay = function(callbackThis, stopCallback) {
+    var realThis = this;
+    var duration;
+    var flowTask;
+
+    // Display the Next Step
+    this.nextStep();
+
+    // Determine the delay Duration
+    flowTask = this.flowTaskArray[this.currStep];
+    duration = flowTask.postTaskDelay + flowTask.action.duration + flowTask.action.removeDelay;
+
+    // Delay, then either loop or end
+    setTimeout(
+        function() {
+            if (realThis.playMode) {
+                // loop
+                realThis.initiatePlay.call(realThis, callbackThis, stopCallback);
+            }
+            else {
+                // end (call callback)
+                stopCallback.call(callbackThis);
+            }
+        }, duration
+    );
+};
+
+/**
  * reinitializeRequestReceived() - Handle the Reinitialize Display request
  */
 FlowSimulator.prototype.reinitializeRequestReceived = function() {
     this.reinitializeDisplay();
     this.currStep = -1;
 };
+
 
 // ************************************************************************************************
 // Data Activities Section
@@ -131,13 +176,19 @@ FlowSimulator.prototype.reinitializeDisplay = function() {
  * @param {string} description - Description to display.
  */
 FlowSimulator.prototype.displayDescription = function(description) {
-    var elem = $("<li>");
-    elem.html(description);
-    this.descriptionAreaObj.append(elem);
-    var scrollHeight = this.descriptionAreaObj.prop("scrollHeight");
+    var elem;
+    var scrollHeight;
 
-    // Scroll to bottom of area
-    this.descriptionAreaObj.scrollTop(scrollHeight);
+    if (description.trim() !== "") {
+        // add the description element
+        elem = $("<" + this.descriptionElementType +">");
+        elem.html(description);
+        this.descriptionAreaObj.append(elem);
+
+        // Scroll to bottom of area
+        scrollHeight = this.descriptionAreaObj.prop("scrollHeight");
+        this.descriptionAreaObj.scrollTop(scrollHeight);
+    }
 };
 
 /**
@@ -146,6 +197,7 @@ FlowSimulator.prototype.displayDescription = function(description) {
 FlowSimulator.prototype.clearDescription = function() {
     this.descriptionAreaObj.empty();
 };
+
 
 // ************************************************************************************************
 // Helpers Section

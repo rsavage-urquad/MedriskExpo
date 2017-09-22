@@ -1,4 +1,10 @@
 /**
+ * Message.js
+ * Author: Roland Savage
+ * (c) 2017 - Roland Savage
+ */
+
+/**
  * Message Object - Represents a Message that can be passed from Entity object to Entity object.
  * @param {string} id - Id for Message object's DOM Element.
  * @param {number} height - DOM Element's height.
@@ -38,6 +44,7 @@ Message.prototype.initialize = function() {
     var titleText;
     var body;
 
+    // Build the Message "Panel" object
     this.panelObj = $("<div>", {id: this.id});
     this.panelObj.addClass(this.panelClass);
     this.panelObj.height(this.height);

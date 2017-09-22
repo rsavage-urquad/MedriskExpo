@@ -1,3 +1,9 @@
+/**
+ * WebDevelopment.js
+ * Author: Roland Savage
+ * (c) 2017 - Roland Savage
+ */
+
 var webDevelopment = null;
 
 $(document).ready(function () {
@@ -5,6 +11,10 @@ $(document).ready(function () {
     webDevelopment = new WebDevelopment();
 });
 
+/**
+ * WebDevelopment Object - Processing object for the Web Development Demonstration page.
+ * @constructor
+ */
 var WebDevelopment = function () {
     this.flowSimulator = null;
     this.serverTier = $("#serverTier");
@@ -28,12 +38,16 @@ var WebDevelopment = function () {
  */
 WebDevelopment.prototype.initialize = function() {
     var realThis = this;
+
+    // Load the Entities, Tasks and Messages
     var entityArray = this.loadEntities();
     var flowTaskArray = this.loadFlowTasks();
     var messageArray = this.loadMessages();
 
-    this.flowSimulator = new FlowSimulator(entityArray, flowTaskArray, messageArray, "descriptionDisplay");
+    // Initialize the Flow Simulator Object
+    this.flowSimulator = new FlowSimulator(entityArray, flowTaskArray, messageArray, "descriptionDisplay", "li");
 
+    // Resize to the current screen size
     this.processResize();
 
     // Add a event handler to the Window resize event
@@ -56,25 +70,35 @@ WebDevelopment.prototype.initialize = function() {
 // Events Section
 // ************************************************************************************************
 
+/**
+ * nextClicked() - Handle the "Next" button click.  If flow is "playing" it will be stopped.
+ */
 WebDevelopment.prototype.nextClicked = function() {
-    this.playMode = false;
-    this.updatePlayStopButton();
+    if (this.playMode) {
+        this.playStopClicked();
+    }
     this.flowSimulator.nextStep();
 };
 
+/**
+ * playStopClicked() - Handle the "Play/Stop" button click.
+ */
 WebDevelopment.prototype.playStopClicked = function() {
     this.playMode = !this.playMode;
     this.updatePlayStopButton();
-
-    // TODO: RS - Auto Play Mode
+    this.flowSimulator.playMode = this.playMode;
+    if (this.playMode) {
+        this.flowSimulator.initiatePlay(this, this.stopCompleted);
+    }
 };
 
 /**
- * restartClicked() - Handle the Restart click event.
+ * restartClicked() - Handle the Restart click.
  */
 WebDevelopment.prototype.restartClicked = function() {
-    this.playMode = false;
-    this.updatePlayStopButton();
+    if (this.playMode) {
+        this.playStopClicked();
+    }
     this.flowSimulator.reinitializeRequestReceived();
 };
 
@@ -133,19 +157,39 @@ WebDevelopment.prototype.loadMessages = function() {
 // Display Processing Section
 // ************************************************************************************************
 
+/**
+ * updatePlayStopButton() - Update the display and state of the Play/Stop button.
+ */
 WebDevelopment.prototype.updatePlayStopButton = function() {
     var playStopButtonObj = $("#playStopButton");
     var playStopIconObj = $("<i class='fa'>");
-    var icon = "fa-stop";
+    var icon = (!this.playMode) ? "fa-hourglass" : "fa-stop";
 
-    if (!this.playMode) {
-        icon = "fa-play";
-    }
+    // set the button Icon
     playStopButtonObj.empty();
     playStopIconObj.addClass(icon);
     playStopButtonObj.append(playStopIconObj);
+
+    // If it was a "Stop" request, disable the button (a callback will be used to enable it).
+    if (!this.playMode) {
+        playStopButtonObj.prop("disabled",true);
+    }
 };
 
+/**
+ * stopCompleted() - Callback function to be called when Flow simulator has stopped it processing.
+ */
+WebDevelopment.prototype.stopCompleted = function() {
+    var playStopButtonObj = $("#playStopButton");
+    var playStopIconObj = $("<i class='fa'>");
+    var icon = "fa-play";
+
+    // Prepare and enable the Play/Stop button
+    playStopButtonObj.empty();
+    playStopIconObj.addClass(icon);
+    playStopButtonObj.append(playStopIconObj);
+    playStopButtonObj.prop("disabled",false);
+};
 
 // ************************************************************************************************
 // Helpers Section
@@ -170,6 +214,9 @@ WebDevelopment.prototype.resizeEnd = function(realThis) {
     }
 };
 
+/**
+ * processResize() - Process a resize occurrence.
+ */
 WebDevelopment.prototype.processResize = function() {
     // Recalculate Heights
     var winHeight = window.innerHeight;

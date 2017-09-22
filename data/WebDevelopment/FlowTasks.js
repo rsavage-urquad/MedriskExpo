@@ -42,7 +42,7 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "HTMLResponse",
-        postTaskDelay: 2000
+        postTaskDelay: 500
     },
     {
         id: "CSSResponse",
@@ -56,6 +56,6 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "CSSResponse",
-        postTaskDelay: 2000
+        postTaskDelay: 500
     }
 ];

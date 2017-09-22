@@ -1,4 +1,10 @@
 /**
+ * EntityObject.js
+ * Author: Roland Savage
+ * (c) 2017 - Roland Savage
+ */
+
+/**
  * EntityObject Object - Represents an Entity involved in a Flow Simulation.  This is basically
  * the container
  * @param {string} objDivId - Id of the Entity's "div"

@@ -1,4 +1,10 @@
 /**
+ * Coordinate.js
+ * Author: Roland Savage
+ * (c) 2017 - Roland Savage
+ */
+
+/**
  * Coordinate Object - Represents an x, y coordinate on the screen.
  * @param {number} x - "x" value
  * @param {number} y - "y" value

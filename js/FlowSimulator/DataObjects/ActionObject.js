@@ -1,4 +1,10 @@
 /**
+ * ActionObject.js
+ * Author: Roland Savage
+ * (c) 2017 - Roland Savage
+ */
+
+/**
  * ActionObject Object - Represents the actions that can be performed on a Message object during
  * a Flow Task.
  * @param {string} id - Action Id

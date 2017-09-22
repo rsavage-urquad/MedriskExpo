@@ -1,4 +1,10 @@
 /**
+ * FlowTask.js
+ * Author: Roland Savage
+ * (c) 2017 - Roland Savage
+ */
+
+/**
  * FlowTask Object - Represents the Plow Tasks that will be processed.
  * @param {string} id - Id
  * @param {string} name - Name
