@@ -264,7 +264,7 @@ var Messages = [
         titleTextClass: "msg-title-sql",
         body: "<span style='color: blue'>SELECT</span><br/>" +
             "&nbsp;&nbsp; TaskId,<br/>" +
-            "&nbsp;&nbsp; TaskName,<br/>" +
+            "&nbsp;&nbsp; TaskDesc,<br/>" +
             "&nbsp;&nbsp; Status<br/>" +
             "<span style='color: blue'>FROM</span> TaskInfo<br/>" +
             "<span style='color: blue'>WHERE</span> UserId = 783",
@@ -279,25 +279,25 @@ var Messages = [
         titleClass: "msg-title",
         titleTextClass: "msg-title-sqlresp",
         body: "<div style='margin-top: 3px;'>" +
-        "<span style='width: 50px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>TaskId</span>" +
-        "<span style='width: 200px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>TaskName</span>" +
-        "<span style='width: 60px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>Status</span>" +
-        "</div>" +
-        "<div>" +
-        "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87554</span>" +
-        "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Eat Doughnuts</span>" +
-        "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
-        "</div>" +
-        "<div>" +
-        "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87555</span>" +
-        "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Drink at Moe&apos;s</span>" +
-        "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
-        "</div>" +
-        "<div>" +
-        "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87558</span>" +
-        "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Kill the boy</span>" +
-        "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
-        "</div>",
+            "<span style='width: 50px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>TaskId</span>" +
+            "<span style='width: 200px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>TaskDesc</span>" +
+            "<span style='width: 60px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>Status</span>" +
+            "</div>" +
+            "<div>" +
+            "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87554</span>" +
+            "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Eat Doughnuts</span>" +
+            "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
+            "</div>" +
+            "<div>" +
+            "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87555</span>" +
+            "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Drink at Moe&apos;s</span>" +
+            "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
+            "</div>" +
+            "<div>" +
+            "<span style='width: 50px; display: inline-block; border: solid 1px black; padding: 1px;'>87558</span>" +
+            "<span style='width: 200px; display: inline-block; border: solid 1px black; padding: 1px;'>Kill the boy</span>" +
+            "<span style='width: 60px; display: inline-block; border: solid 1px black; padding: 1px;'>O</span>" +
+            "</div>",
         bodyClass: "msg-body msg-body-sqlresp"
     },
     {
@@ -309,34 +309,50 @@ var Messages = [
         titleClass: "msg-title-browser",
         titleTextClass: "",
         body: "<div style='padding: 2px; background-color: gainsboro;'>Url: <span style='width: 300px; display: inline-block; border: solid 1px black;background-color: white;'>https://www.todo.com</span></div><br/>" +
+            "<div style='padding-left: 5px; color: darkblue; font-style:italic; font-size: 12px;'>To Do for Homer Simpson</div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Eat Doughnuts</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Drink at Moe's</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Kill The boy</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'><span style='width: 180px; display: inline-block; background-color: #FFFACD; border: solid 1px black;'>&nbsp;</span></span><span style='width: 36px; display: inline-block; text-align: center; background-color: mediumblue; color: white; padding: 1px; border: solid 1px black;'>Add</span></div>",
+        bodyClass: "msg-body-browser"
+    },
+    {
+        id: "TaskPageClickComplete",
+        height: 260,
+        width: 390,
+        panelClass: "msg-panel",
+        title: "Web Browser",
+        titleClass: "msg-title-browser",
+        titleTextClass: "",
+        body: "<div style='padding: 2px; background-color: gainsboro;'>Url: <span style='width: 300px; display: inline-block; border: solid 1px black;background-color: white;'>https://www.todo.com</span></div><br/>" +
         "<div style='padding-left: 5px; color: darkblue; font-style:italic; font-size: 12px;'>To Do for Homer Simpson</div>" +
-        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Eat Doughnuts</span><span style='width: 36px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Close</span></div>" +
-        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Drink at Moe's</span><span style='width: 36px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Close</span></div>" +
-        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Kill The boy</span><span style='width: 36px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Close</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Eat Doughnuts</span><span style='width: 47px; display: inline-block; text-align: center; background-color: darkgray; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Drink at Moe's</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Kill The boy</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
         "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'><span style='width: 180px; display: inline-block; background-color: #FFFACD; border: solid 1px black;'>&nbsp;</span></span><span style='width: 36px; display: inline-block; text-align: center; background-color: mediumblue; color: white; padding: 1px; border: solid 1px black;'>Add</span></div>",
         bodyClass: "msg-body-browser"
     },
     {
-        id: "CloseTaskRequest",
+        id: "CompleteTaskRequest",
         height: 120,
         width: 180,
         panelClass: "msg-panel",
         title: "HTTP",
         titleClass: "msg-title",
         titleTextClass: "msg-title-httpget",
-        body: "GET https://www.todo.com/api/ToDo/Close/87554 /HTTP/1.1<br/>" +
-        "<b>Client</b><br/>" +
-        "&nbsp;&nbsp; Accept: text/html, application/xhtml+xml, */*<br/>" +
-        "&nbsp;&nbsp; Accept-Encoding: gzip, deflate<br/>" +
-        "&nbsp;&nbsp; Accept-Language: en-US<br/>" +
-        "&nbsp;&nbsp; User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko<br/>" +
-        "<b>Cookies</b><br/>" +
-        "&nbsp; Cookie<br/>" +
-        "&nbsp;&nbsp;&nbsp; ASP.NET_SessionId=yr6rt3losu8dhy7",
+        body: "GET https://www.todo.com/api/ToDo/Complete/87554 /HTTP/1.1<br/>" +
+            "<b>Client</b><br/>" +
+            "&nbsp;&nbsp; Accept: text/html, application/xhtml+xml, */*<br/>" +
+            "&nbsp;&nbsp; Accept-Encoding: gzip, deflate<br/>" +
+            "&nbsp;&nbsp; Accept-Language: en-US<br/>" +
+            "&nbsp;&nbsp; User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko<br/>" +
+            "<b>Cookies</b><br/>" +
+            "&nbsp; Cookie<br/>" +
+            "&nbsp;&nbsp;&nbsp; ASP.NET_SessionId=yr6rt3losu8dhy7",
         bodyClass: "msg-body msg-body-http"
     },
     {
-        id: "JSONCloseTaskResponse",
+        id: "JSONCompleteTaskResponse",
         height: 120,
         width: 180,
         panelClass: "msg-panel",
@@ -344,10 +360,138 @@ var Messages = [
         titleClass: "msg-title",
         titleTextClass: "msg-title-json",
         body: "resp: {<br/>" +
-        "&nbsp;&nbsp;requestType: &quot;C&quot;,<br/>" +
-        "&nbsp;&nbsp;taskId: 87554,<br/>" +
-        "&nbsp;&nbsp;success: true<br/>}",
+            "&nbsp;&nbsp;requestType: &quot;C&quot;,<br/>" +
+            "&nbsp;&nbsp;taskId: 87554,<br/>" +
+            "&nbsp;&nbsp;success: true<br/>}",
         bodyClass: "msg-body msg-body-json"
+    },
+    {
+        id: "SQLUpdateTask",
+        height: 80,
+        width: 160,
+        panelClass: "msg-panel",
+        title: "SQL",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-sql",
+        body: "<span style='color: blue'>BEGIN TRAN</span> CompleteTask<br/>" +
+            "<span style='color: blue'>UPDATE</span> TaskInfo <span style='color: blue'>SET</span><br/>" +
+            "Status = &apos;C&apos;<br/>" +
+            "<span style='color: blue'>WHERE</span> TaskId = 87554<br/>" +
+            "<span style='color: blue'>COMMIT TRAN</span> CompleteTask",
+        bodyClass: "msg-body msg-body-sql"
+    },
+    {
+        id: "SQLSuccessResponse",
+        height: 60,
+        width: 180,
+        panelClass: "msg-panel",
+        title: "SQL Response",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-sqlresp",
+        body: "<div style='margin-top: 3px;'><span style='width: 150px; display: inline-block; border: solid 1px black; background-color: #e5e5e5; padding: 1px;'>Response</span></div>" +
+            "<div><span style='width: 150px; display: inline-block; border: solid 1px black; padding: 1px; color: green; font-style: italic'>Success</span></div>",
+        bodyClass: "msg-body msg-body-sqlresp"
+    },
+    {
+        id: "TasksPageUpdated",
+        height: 260,
+        width: 390,
+        panelClass: "msg-panel",
+        title: "Web Browser",
+        titleClass: "msg-title-browser",
+        titleTextClass: "",
+        body: "<div style='padding: 2px; background-color: gainsboro;'>Url: <span style='width: 300px; display: inline-block; border: solid 1px black;background-color: white;'>https://www.todo.com</span></div><br/>" +
+            "<div style='padding-left: 5px; color: darkblue; font-style:italic; font-size: 12px;'>To Do for Homer Simpson</div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block; text-decoration: line-through'>Eat Doughnuts</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Drink at Moe's</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Kill The boy</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'><span style='width: 180px; display: inline-block; background-color: #FFFACD; border: solid 1px black;'>&nbsp;</span></span><span style='width: 36px; display: inline-block; text-align: center; background-color: mediumblue; color: white; padding: 1px; border: solid 1px black;'>Add</span></div>",
+        bodyClass: "msg-body-browser"
+    },
+    {
+        id: "TasksPageAdd",
+        height: 260,
+        width: 390,
+        panelClass: "msg-panel",
+        title: "Web Browser",
+        titleClass: "msg-title-browser",
+        titleTextClass: "",
+        body: "<div style='padding: 2px; background-color: gainsboro;'>Url: <span style='width: 300px; display: inline-block; border: solid 1px black;background-color: white;'>https://www.todo.com</span></div><br/>" +
+            "<div style='padding-left: 5px; color: darkblue; font-style:italic; font-size: 12px;'>To Do for Homer Simpson</div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block; text-decoration: line-through'>Eat Doughnuts</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Drink at Moe's</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Kill The boy</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+            "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'><span style='width: 180px; display: inline-block; background-color: #FFFACD; border: solid 1px black;'>Snuggle with Marge</span></span><span style='width: 36px; display: inline-block; text-align: center; background-color: mediumblue; color: white; padding: 1px; border: solid 1px black;'>Add</span></div>",
+        bodyClass: "msg-body-browser"
+    },
+    {
+        id: "AddTaskRequest",
+        height: 120,
+        width: 180,
+        panelClass: "msg-panel",
+        title: "HTTP",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-httppost",
+        body: "Post https://www.todo.com/api/ToDo/Add  /HTTP/1.1<br/>" +
+            "<b>Client</b><br/>" +
+            "&nbsp;&nbsp; Accept: text/html, application/xhtml+xml, */*<br/>" +
+            "&nbsp;&nbsp; Accept-Encoding: gzip, deflate<br/>" +
+            "&nbsp;&nbsp; Accept-Language: en-US<br/>" +
+            "&nbsp;&nbsp; User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko<br/>" +
+            "<b>Data</b><br/>" +
+            "&nbsp;&nbsp; usedId: 783<br/>" +
+            "&nbsp;&nbsp; TaskDesc: &quot;Snuggle with Marge&quot;",
+        bodyClass: "msg-body msg-body-http"
+    },
+    {
+        id: "SQLInsertTask",
+        height: 122,
+        width: 160,
+        panelClass: "msg-panel",
+        title: "SQL",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-sql",
+        body: "<span style='color: blue'>BEGIN TRAN</span> InsertTask<br/>" +
+            "<span style='color: blue'>INSERT INTO </span> TaskInfo (<br/>" +
+            "&nbsp;&nbsp; TaskDesc,<br/>" +
+            "&nbsp;&nbsp; Status<br/>" +
+            ") <span style='color: blue'>VALUES</span> (<br/>" +
+            "&nbsp;&nbsp; &apos;Snuggle with Marge&apos;,<br/>" +
+            "&nbsp;&nbsp; &apos;O&apos;<br/>" +
+            ")<br/>" +
+            "<span style='color: blue'>COMMIT TRAN</span> InsertTask",
+        bodyClass: "msg-body msg-body-sql"
+    },
+    {
+        id: "JSONAddTaskResponse",
+        height: 120,
+        width: 180,
+        panelClass: "msg-panel",
+        title: "JSON",
+        titleClass: "msg-title",
+        titleTextClass: "msg-title-json",
+        body: "resp: {<br/>" +
+            "&nbsp;&nbsp;requestType: &quot;A&quot;,<br/>" +
+            "&nbsp;&nbsp;taskId: 87592,<br/>" +
+            "&nbsp;&nbsp;taskDesc: &quot;Snuggle with Marge&quot;,<br/>" +
+            "&nbsp;&nbsp;success: true<br/>}",
+        bodyClass: "msg-body msg-body-json"
+    },
+    {
+        id: "TasksPageTaskAdded",
+        height: 260,
+        width: 390,
+        panelClass: "msg-panel",
+        title: "Web Browser",
+        titleClass: "msg-title-browser",
+        titleTextClass: "",
+        body: "<div style='padding: 2px; background-color: gainsboro;'>Url: <span style='width: 300px; display: inline-block; border: solid 1px black;background-color: white;'>https://www.todo.com</span></div><br/>" +
+        "<div style='padding-left: 5px; color: darkblue; font-style:italic; font-size: 12px;'>To Do for Homer Simpson</div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block; text-decoration: line-through'>Eat Doughnuts</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Drink at Moe's</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Kill The boy</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'>Snuggle with Marge</span><span style='width: 47px; display: inline-block; text-align: center; background-color: gainsboro; padding: 1px; border: solid 1px black;'>Complete</span></div>" +
+        "<div style='padding-left: 20px; margin-top: 2px;'><span style='width: 200px; display: inline-block;'><span style='width: 180px; display: inline-block; background-color: #FFFACD; border: solid 1px black;'>&nbsp;</span></span><span style='width: 36px; display: inline-block; text-align: center; background-color: mediumblue; color: white; padding: 1px; border: solid 1px black;'>Add</span></div>",
+        bodyClass: "msg-body-browser"
     }
-
 ];

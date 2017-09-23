@@ -14,7 +14,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "PageRequest",
-        postTaskDelay: 2000
+        postTaskDelay: 1000
     },
     {
         id: "GetLoginPage",
@@ -28,7 +28,7 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "GetLoginPage",
-        postTaskDelay: 500
+        postTaskDelay: 0
     },
     {
         id: "HTMLResponseLogin",
@@ -98,7 +98,7 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "PostLoginCredentials",
-        postTaskDelay: 500
+        postTaskDelay: 0
     },
     {
         id: "GetUserInfoSPBad",
@@ -145,7 +145,7 @@ var FlowTasks = [
     {
         id: "LoginFailed",
         name: "Login Failed",
-        description: "Invalid credentials (Doh!)",
+        description: "Invalid credentials (<span style='color: red; font-style: italic;'>Doh!</span>)",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -182,7 +182,7 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "PostLoginCredentials",
-        postTaskDelay: 500
+        postTaskDelay: 0
     },
     {
         id: "GetUserInfoSPGood",
@@ -228,7 +228,7 @@ var FlowTasks = [
     },
     {
         id: "TaskInfoResponse",
-        name: "ask Info Response",
+        name: "Task Info Response",
         description: "Database server responds with the requested Task information.",
         actionId: 1,
         type: "A",
@@ -252,7 +252,7 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "HTMLResponse",
-        postTaskDelay: 500
+        postTaskDelay: 0
     },
     {
         id: "CSSResponse",
@@ -266,7 +266,7 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "CSSResponse",
-        postTaskDelay: 500
+        postTaskDelay: 0
     },
     {
         id: "JavaScriptResponse",
@@ -280,12 +280,12 @@ var FlowTasks = [
         removeOnComplete: true,
         removeDelay: 1000,
         messageId: "JavaScriptResponse",
-        postTaskDelay: 500
+        postTaskDelay: 0
     },
     {
         id: "TasksPage",
         name: "Tasks Page",
-        description: "Task Page rendered on the web browser.User enters URL and hits enter.",
+        description: "Task Page rendered on the web browser.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -297,44 +297,171 @@ var FlowTasks = [
         postTaskDelay: 2000
     },
     {
-        id: "CloseTaskRequest",
-        name: "Close Task Request",
-        description: "Browser calls Web API to mark a Task as closed.",
+        id: "TaskPageClickComplete",
+        name: "Task Page Click Complete",
+        description: "User clicks \"Complete\" for a Task.",
+        actionId: 1,
+        type: "D",
+        source: "clientBrowserDisplay",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "TaskPageClickComplete",
+        postTaskDelay: 2000
+    },
+    {
+        id: "CompleteTaskRequest",
+        name: "Complete Task Request",
+        description: "Browser calls Web API to mark a Task as completed.",
         actionId: 1,
         type: "A",
         source: "clientBrowser",
         destination: "webServer",
         duration: 1500,
-        removeOnComplete: false,
+        removeOnComplete: true,
         removeDelay: 1000,
-        messageId: "CloseTaskRequest",
-        postTaskDelay: 500
+        messageId: "CompleteTaskRequest",
+        postTaskDelay: 0
     },
-
-    /* Update Database */
-    /* Database Response */
-
     {
-        id: "JSONCloseTaskResponse",
-        name: "JSON Close Task Response",
-        description: "Response from Web Server indicating close Task succeeded.",
+        id: "UpdateTaskInfo",
+        name: "Update Task Info",
+        description: "Web server send requests to Database to mark the Task as completed.",
+        actionId: 1,
+        type: "A",
+        source: "webServer",
+        destination: "dbServer",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 500,
+        messageId: "SQLUpdateTask",
+        postTaskDelay: 0
+    },
+    {
+        id: "TaskCompleteResponse",
+        name: "Task Complete Response",
+        description: "Database server responds with the update status.",
+        actionId: 1,
+        type: "A",
+        source: "dbServer",
+        destination: "webServer",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 500,
+        messageId: "SQLSuccessResponse",
+        postTaskDelay: 0
+    },
+    {
+        id: "JSONCompleteTaskResponse",
+        name: "JSON Complete Task Response",
+        description: "Response from Web Server indicating complete Task succeeded.",
         actionId: 1,
         type: "A",
         source: "webServer",
         destination: "clientBrowser",
         duration: 1500,
-        removeOnComplete: false,
+        removeOnComplete: true,
         removeDelay: 500,
-        messageId: "JSONCloseTaskResponse",
+        messageId: "JSONCompleteTaskResponse",
         postTaskDelay: 0
+    },
+    {
+        id: "TasksPageUpdated",
+        name: "Tasks Page Updated",
+        description: "Task Page is updated with result of complete task.",
+        actionId: 1,
+        type: "D",
+        source: "clientBrowserDisplay",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "TasksPageUpdated",
+        postTaskDelay: 2000
+    },
+    {
+        id: "TasksPageAdd",
+        name: "Tasks Page Add",
+        description: "User enters a new Task and clicks \"Add\" button.",
+        actionId: 1,
+        type: "D",
+        source: "clientBrowserDisplay",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "TasksPageAdd",
+        postTaskDelay: 2000
+    },
+    {
+        id: "AddTaskRequest",
+        name: "Add Task Request",
+        description: "Browser calls Web API to add a new Task.",
+        actionId: 1,
+        type: "A",
+        source: "clientBrowser",
+        destination: "webServer",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 1000,
+        messageId: "AddTaskRequest",
+        postTaskDelay: 0
+    },
+    {
+        id: "AddTaskInfo",
+        name: "Add Task Info",
+        description: "Web server send requests to Database to insert the new Task.",
+        actionId: 1,
+        type: "A",
+        source: "webServer",
+        destination: "dbServer",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 500,
+        messageId: "SQLInsertTask",
+        postTaskDelay: 0
+    },
+    {
+        id: "TaskCompleteResponse",
+        name: "Task Complete Response",
+        description: "Database server responds with the insert status.",
+        actionId: 1,
+        type: "A",
+        source: "dbServer",
+        destination: "webServer",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 500,
+        messageId: "SQLSuccessResponse",
+        postTaskDelay: 0
+    },
+    {
+        id: "JSONAddTaskResponse",
+        name: "JSON Add Task Response",
+        description: "Response from Web Server indicating add Task succeeded.",
+        actionId: 1,
+        type: "A",
+        source: "webServer",
+        destination: "clientBrowser",
+        duration: 1500,
+        removeOnComplete: true,
+        removeDelay: 500,
+        messageId: "JSONAddTaskResponse",
+        postTaskDelay: 0
+    },
+    {
+        id: "TasksPageTaskAdded",
+        name: "Tasks Page Task Added",
+        description: "Task Page is updated with result of newly added Task.",
+        actionId: 1,
+        type: "D",
+        source: "clientBrowserDisplay",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "TasksPageTaskAdded",
+        postTaskDelay: 2000
     }
-
-    /* Render change on Browser */
-    /* User Adds Item */
-    /* Post to Server */
-    /* Insert Database */
-    /* Database Response */
-    /* Json Response to Browser */
-    /* Render change on Browser */
-
 ];
