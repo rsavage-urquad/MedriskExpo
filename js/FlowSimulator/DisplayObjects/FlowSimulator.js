@@ -66,6 +66,29 @@ FlowSimulator.prototype.processResize = function() {
 };
 
 /**
+ * priorStep() - Ultimate result will be to go back a step.
+ */
+FlowSimulator.prototype.priorStep = function() {
+    var flowTask;
+
+    flowTask = this.flowTaskArray[this.currStep];
+
+    // Remove the Description. Calling twice as we will be adding one back
+    this.removeLastDescription();
+    this.removeLastDescription();
+
+    // If the current Flow Task left a Message on the screen, remove it.
+    if (!flowTask.action.removeOnComplete) {
+        $("#" + flowTask.messageId).remove();
+    }
+
+    // Step back 2 (as we will be processing the next step
+    this.currStep -= 2;
+    this.currStep = (this.currStep < 0) ? -1 : this.currStep;
+    this.nextStep();
+};
+
+/**
  * nextStep() - Process the next task of the Flow Array
  */
 FlowSimulator.prototype.nextStep = function() {
@@ -172,23 +195,30 @@ FlowSimulator.prototype.reinitializeDisplay = function() {
 };
 
 /**
- * displayDescription() - Display the provided description in the description area.
+ * displayDescription() - Display the provided description in the description area, then scroll
+ * to the bottom of the area.
  * @param {string} description - Description to display.
  */
 FlowSimulator.prototype.displayDescription = function(description) {
     var elem;
-    var scrollHeight;
 
     if (description.trim() !== "") {
         // add the description element
         elem = $("<" + this.descriptionElementType +">");
         elem.html(description);
         this.descriptionAreaObj.append(elem);
-
-        // Scroll to bottom of area
-        scrollHeight = this.descriptionAreaObj.prop("scrollHeight");
-        this.descriptionAreaObj.scrollTop(scrollHeight);
+        this.scrollToDescriptionBottom();
     }
+};
+
+/**
+ * removeLastDescription() - Remove the last Description element, then scroll to the bottom of
+ * the area.
+ * to the bottom of the area
+ */
+FlowSimulator.prototype.removeLastDescription = function() {
+    this.descriptionAreaObj.children().last().remove();
+    this.scrollToDescriptionBottom();
 };
 
 /**
@@ -216,4 +246,14 @@ FlowSimulator.prototype.computeCoordinate = function(targetCenter, msgHeight, ms
     var y = Math.floor(targetCenter.y -(msgHeight / 2));
 
     return new Coordinate(x, y);
+};
+
+/**
+ * scrollToDescriptionBottom() - Scrolls to the bottom of the Description area.
+ */
+FlowSimulator.prototype.scrollToDescriptionBottom = function() {
+    var scrollHeight;
+
+    scrollHeight = this.descriptionAreaObj.prop("scrollHeight");
+    this.descriptionAreaObj.scrollTop(scrollHeight);
 };
