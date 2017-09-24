@@ -71,6 +71,16 @@ WebDevelopment.prototype.initialize = function() {
 // ************************************************************************************************
 
 /**
+ * priorClicked() - Handle the "Prior" button click.  If flow is "playing" it will be stopped.
+ */
+WebDevelopment.prototype.priorClicked = function() {
+    if (this.playMode) {
+        this.playStopClicked();
+    }
+    this.flowSimulator.priorStep();
+};
+
+/**
  * nextClicked() - Handle the "Next" button click.  If flow is "playing" it will be stopped.
  */
 WebDevelopment.prototype.nextClicked = function() {
