@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.func-decomp {
+    background-color: #FF7474;
+    border: solid 1px #711616;
+    height: 100%;
+}
+
+.assets-area {
+    background-color: #FAFDA9;
+    border-top: solid 1px #7B7F15;
+    border-right: solid 1px #7B7F15;
+}
+
+.pseudo-code {
+    background-color: #9EB2F3;
+    border-top: solid 1px #1F3271;
+    border-right: solid 1px #1F3271;
+    border-bottom: solid 1px #1F3271;
+}
+
+.description-row {
+    height: 400px;
+}
+
+.description-area {
+    overflow-y: auto;
+    margin-bottom: 0;
+}
+
+.curr-activity {
+    background-color: #BDDEA2;
+    border-top: solid 1px #1E320E;
+    border-right: solid 1px #1E320E;
+    border-bottom: solid 1px #1E320E;
+    height: 400px;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.asset-item {
+    height: 150px;
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+}
+
+.asset-image {
+    max-width:100%;
+    max-height:100%;
+}
+
+.asset-sep {
+    height: 15px;
+}
+
+.button-col {
+    padding-top: 12px;
+    text-align: right;
+}
+
+.btn-fixed {
+    width: 35px;
+}
+
+
+
+.msg-panel {
+    background-color: white;
+    border: solid 1px black;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    z-index: 1000;
+    position: absolute;
+}
+
+.msg-title {
+     font-size: 10px;
+ }
+
+.msg-title-html {
+    padding: 2px;
+    background-color: #2B68C1;
+    color: white;
+}
+
+.msg-title-css {
+    padding: 2px;
+    background-color: #D4040E;
+    color: white;
+}
+
+.msg-title-js {
+    padding: 2px;
+    background-color: #14751A;
+    color: white;
+}
+
+.msg-title-json {
+    padding: 2px;
+    background-color: #683883;
+    color: white;
+}
+
+.msg-title-browser {
+    font-size: 12px;
+    background-color: black;
+    color: white;
+}
+.msg-title-httpget {
+    padding: 2px;
+    background-color: #FF8E31;
+    color: white;
+}
+
+.msg-title-httppost {
+    padding: 2px;
+    background-color: #9A7F00;
+    color: white;
+}
+
+.msg-title-sqlsp {
+    padding: 2px;
+    background-color: #3A8184;
+    color: white;
+}
+
+.msg-title-sql {
+    padding: 2px;
+    background-color: #690104;
+    color: white;
+}
+
+.msg-title-sqlresp {
+    padding: 2px;
+    background-color: #495F92;
+    color: white;
+}
+
+.msg-body {
+    font-size: 8px;
+}
+
+.msg-body-browser {
+    font-size: 10px;
+}
+
+.msg-body-html {
+}
+
+.msg-body-css {
+}
+
+.msg-body-http {
+}
+
+.msg-body-json {
+}
+
+.msg-body-js {
+}
+
+.msg-body-sqlsp {
+}
+
+.msg-body-sql {
+}
+
+.msg-body-sqlresp {
+}
+
+/* Testing */
+.grayit {
+    background-color: whitesmoke;
+}
