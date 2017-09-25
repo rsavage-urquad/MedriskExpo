@@ -5,7 +5,7 @@ var FlowTasks = [
     {
         id: "PageRequest",
         name: "Page Request",
-        description: "User enters URL and hits enter.",
+        description: "User enters URL and submits request.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -19,7 +19,7 @@ var FlowTasks = [
     {
         id: "GetLoginPage",
         name: "Get Login Page",
-        description: "Browser sends request.",
+        description: "Browser sends request to web server.",
         actionId: 1,
         type: "A",
         source: "clientBrowser",
@@ -33,7 +33,7 @@ var FlowTasks = [
     {
         id: "HTMLResponseLogin",
         name: "HTML Response",
-        description: "HTML Response from Server to Client's web browser.",
+        description: "HTML response sent from web server to the browser.",
         actionId: 2,
         type: "A",
         source: "webServer",
@@ -47,7 +47,7 @@ var FlowTasks = [
     {
         id: "CSSResponse",
         name: "CSS Response",
-        description: "Cascading Style Sheet provides display style instructions to the Client's web browser.",
+        description: "Cascading Style Sheet, which provides styling instructions, is sent to the browser.",
         actionId: 3,
         type: "A",
         source: "webServer",
@@ -61,7 +61,7 @@ var FlowTasks = [
     {
         id: "LoginPage",
         name: "Login Page",
-        description: "Login Page rendered in the web browser.",
+        description: "Login Page rendered in the browser.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -75,7 +75,7 @@ var FlowTasks = [
     {
         id: "LoginPageFilledInBad",
         name: "Login Page Filled In (incorrectly)",
-        description: "User enters invalid credentials and \"Submits\" info.",
+        description: "User enters invalid credentials and submits info.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -89,7 +89,7 @@ var FlowTasks = [
     {
         id: "PostLoginCredentials",
         name: "Post Login Info",
-        description: "Login credentials sent to Web Server.",
+        description: "Login credentials sent to web server.",
         actionId: 1,
         type: "A",
         source: "clientBrowser",
@@ -103,7 +103,7 @@ var FlowTasks = [
     {
         id: "GetUserInfoSPBad",
         name: "Get User Info SP Bad",
-        description: "Call the Database Stored Procedure to Get the User information.",
+        description: "Web application calls a Database Stored Procedure to get the user information.",
         actionId: 1,
         type: "A",
         source: "webServer",
@@ -131,7 +131,7 @@ var FlowTasks = [
     {
         id: "JSONLoginResponseInvalid",
         name: "JSON Invalid Response",
-        description: "Response from Web Server indicating failed authentication.",
+        description: "Response from web server to browser indicating failed authentication.",
         actionId: 1,
         type: "A",
         source: "webServer",
@@ -145,7 +145,7 @@ var FlowTasks = [
     {
         id: "LoginFailed",
         name: "Login Failed",
-        description: "Invalid credentials (<span style='color: red; font-style: italic;'>Doh!</span>)",
+        description: "Invalid credentials (<span style='color: red; font-style: italic;'>Doh!</span>).",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -159,7 +159,7 @@ var FlowTasks = [
     {
         id: "LoginPageFilledInGood",
         name: "Login Page Filled In (correctly)",
-        description: "User enters valid credentials and \"Submits\" info",
+        description: "User enters valid credentials and submits info.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -173,7 +173,7 @@ var FlowTasks = [
     {
         id: "PostLoginCredentials",
         name: "Post Login Info",
-        description: "Login credentials sent to Web Server",
+        description: "Login credentials sent to the web server.",
         actionId: 1,
         type: "A",
         source: "clientBrowser",
@@ -187,7 +187,7 @@ var FlowTasks = [
     {
         id: "GetUserInfoSPGood",
         name: "Get User Info SP - Good",
-        description: "Call the Database Stored Procedure to Get the User information.",
+        description: "Web application calls a Database Stored Procedure to get the user information.",
         actionId: 1,
         type: "A",
         source: "webServer",
@@ -243,7 +243,7 @@ var FlowTasks = [
     {
         id: "HTMLResponse",
         name: "HTML Response",
-        description: "Response from Server to Client's Web Browser",
+        description: "HTML page populated and sent from web server to the browser.",
         actionId: 2,
         type: "A",
         source: "webServer",
@@ -257,7 +257,7 @@ var FlowTasks = [
     {
         id: "CSSResponse",
         name: "CSS Response",
-        description: "Cascading Style Sheet provides display style instructions to the Client's Web Browser",
+        description: "Cascading Style Sheet sent to the browser.",
         actionId: 3,
         type: "A",
         source: "webServer",
@@ -271,7 +271,7 @@ var FlowTasks = [
     {
         id: "JavaScriptResponse",
         name: "JavaScript Response",
-        description: "JavaScript code will add \"client-side\" logic.",
+        description: "JavaScript code, which adds \"client-side\" processing logic, is sent to the browser.",
         actionId: 3,
         type: "A",
         source: "webServer",
@@ -285,7 +285,7 @@ var FlowTasks = [
     {
         id: "TasksPage",
         name: "Tasks Page",
-        description: "Task Page rendered on the web browser.",
+        description: "Task page rendered on the browser.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -313,7 +313,7 @@ var FlowTasks = [
     {
         id: "CompleteTaskRequest",
         name: "Complete Task Request",
-        description: "Browser calls Web API to mark a Task as completed.",
+        description: "Browser calls Web API to request the Task be marked as completed.",
         actionId: 1,
         type: "A",
         source: "clientBrowser",
@@ -341,7 +341,7 @@ var FlowTasks = [
     {
         id: "TaskCompleteResponse",
         name: "Task Complete Response",
-        description: "Database server responds with the update status.",
+        description: "Database server responds with the status of the update.",
         actionId: 1,
         type: "A",
         source: "dbServer",
@@ -355,7 +355,7 @@ var FlowTasks = [
     {
         id: "JSONCompleteTaskResponse",
         name: "JSON Complete Task Response",
-        description: "Response from Web Server indicating complete Task succeeded.",
+        description: "Web server sends response indicating that the request succeeded.",
         actionId: 1,
         type: "A",
         source: "webServer",
@@ -369,7 +369,7 @@ var FlowTasks = [
     {
         id: "TasksPageUpdated",
         name: "Tasks Page Updated",
-        description: "Task Page is updated with result of complete task.",
+        description: "Task page is updated with result of \"Complete Task\" request.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
@@ -425,7 +425,7 @@ var FlowTasks = [
     {
         id: "TaskCompleteResponse",
         name: "Task Complete Response",
-        description: "Database server responds with the insert status.",
+        description: "Database server responds with the status of the insert.",
         actionId: 1,
         type: "A",
         source: "dbServer",
@@ -439,7 +439,7 @@ var FlowTasks = [
     {
         id: "JSONAddTaskResponse",
         name: "JSON Add Task Response",
-        description: "Response from Web Server indicating add Task succeeded.",
+        description: "Web server sends response indicating that the request succeeded.",
         actionId: 1,
         type: "A",
         source: "webServer",
@@ -453,7 +453,7 @@ var FlowTasks = [
     {
         id: "TasksPageTaskAdded",
         name: "Tasks Page Task Added",
-        description: "Task Page is updated with result of newly added Task.",
+        description: "Task page is altered with result of newly added Task.",
         actionId: 1,
         type: "D",
         source: "clientBrowserDisplay",
