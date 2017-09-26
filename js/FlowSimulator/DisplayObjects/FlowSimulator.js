@@ -61,7 +61,7 @@ FlowSimulator.prototype.loadDictionary = function(dict, arr, id) {
 FlowSimulator.prototype.processResize = function() {
     // Notify Entity Objects
     _.forOwn(this.entityDict, function(value) {
-        value.resize();
+        value.resize.call(value);
     });
 };
 

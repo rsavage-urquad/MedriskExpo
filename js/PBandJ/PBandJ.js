@@ -20,10 +20,10 @@ var PBandJ = function () {
     this.mainContainer = $("#mainContainer");
     this.overview = $("#overview");
     this.preparePlatform = $("#preparePlatform");
-    this.applyAssets = $("#applyAssets");
+    this.applyIngredients = $("#applyIngredients");
     this.finalPreparation = $("#finalPreparation");
-    this.pseudoCode = $("#pseudoCode");
-    this.currActivity = $("#currActivity");
+    this.pseudoCodeContainer = $("#pseudoCodeContainer");
+    this.currActivityContainer = $("#currActivityContainer");
 
     this.playMode = false;
 
@@ -46,12 +46,12 @@ PBandJ.prototype.initialize = function() {
     var realThis = this;
 
     // Load the Entities, Tasks and Messages
-    // var entityArray = this.loadEntities();
-    // var flowTaskArray = this.loadFlowTasks();
-    // var messageArray = this.loadMessages();
+    var entityArray = this.loadEntities();
+    var flowTaskArray = this.loadFlowTasks();
+    var messageArray = this.loadMessages();
 
     // Initialize the Flow Simulator Object
-    //this.flowSimulator = new FlowSimulator(entityArray, flowTaskArray, messageArray, "descriptionDisplay", "li");
+    this.flowSimulator = new FlowSimulator(entityArray, flowTaskArray, messageArray, "descriptionDisplay", "li");
 
     // Resize to the current screen size
     this.processResize();
@@ -131,7 +131,7 @@ PBandJ.prototype.loadEntities = function() {
     var entityArray = [];
 
     _.forEach(Entities, function(item) {
-        entityArray.push(new EntityObject(item.id, item.containerId));
+        entityArray.push(new EntityObject(item.id, item.containerId, item.useFullContainer));
     });
 
     return entityArray;
@@ -249,7 +249,7 @@ PBandJ.prototype.processResize = function() {
     var overviewSectionHeight = Math.floor((overviewDivHeight - overviewHeadHeight) / 4);
     this.overview.outerHeight(overviewSectionHeight);
     this.preparePlatform.outerHeight(overviewSectionHeight);
-    this.applyAssets.outerHeight(overviewSectionHeight);
+    this.applyIngredients.outerHeight(overviewSectionHeight);
     this.finalPreparation.outerHeight(overviewSectionHeight);
 
     // Set the heights of the items in Column 2
@@ -261,7 +261,7 @@ PBandJ.prototype.processResize = function() {
     $("#pseudoCodeDiv").outerHeight(halfHeight);
     var pseudoCodeHeadHeight = $("#pseudoCodeHead").outerHeight(true);
     var pseudoCodeHeight = (halfHeight - pseudoCodeHeadHeight) - 2;
-    this.pseudoCode.outerHeight(pseudoCodeHeight);
+    this.pseudoCodeContainer.outerHeight(pseudoCodeHeight);
 
     // Set the heights of the items in Column 3
     $("#descriptionDiv").outerHeight(halfHeight);
@@ -271,11 +271,11 @@ PBandJ.prototype.processResize = function() {
     $("#activityDiv").outerHeight(halfHeight);
     var activityHeadHeight = $("#activityHead").outerHeight(true);
     var activityHeight = (halfHeight - activityHeadHeight) - 2;
-    this.currActivity.outerHeight(activityHeight);
+    this.currActivityContainer.outerHeight(activityHeight);
 
     // Notify Flow Simulator
-    // this.flowSimulator.processResize();
-    // this.flowSimulator.reinitializeRequestReceived();
+    this.flowSimulator.processResize();
+    this.flowSimulator.reinitializeRequestReceived();
 };
 
 PBandJ.prototype.resizeImages = function(assetAreaId) {

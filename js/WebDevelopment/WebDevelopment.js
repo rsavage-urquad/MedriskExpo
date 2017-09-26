@@ -125,7 +125,7 @@ WebDevelopment.prototype.loadEntities = function() {
     var entityArray = [];
 
     _.forEach(Entities, function(item) {
-        entityArray.push(new EntityObject(item.id, item.containerId));
+        entityArray.push(new EntityObject(item.id, item.containerId, item.useFullContainer));
     });
 
     return entityArray;

@@ -1,21 +1,65 @@
 /**
- * FlowTasks for Web Development Flow Simulation - this will take the place of a JSON response from the Server.
+ * FlowTasks for Build a Peanut Butter and Jelly Sandwich Flow Simulation - this will take the place of a
+ * JSON response from the Server.
  */
 var FlowTasks = [
     {
-        id: "PageRequest",
-        name: "Page Request",
-        description: "User enters URL and submits request.",
+        id: "DisplayOverview",
+        name: "Display Overview",
+        description: "",
         actionId: 1,
         type: "D",
-        source: "clientBrowserDisplay",
+        source: "overview",
         destination: "",
         duration: 0,
         removeOnComplete: false,
         removeDelay: 0,
-        messageId: "PageRequest",
-        postTaskDelay: 1000
+        messageId: "DisplayOverview",
+        postTaskDelay: 0
     },
+    {
+        id: "DisplayPreparePlatform",
+        name: "Display Prepare Platform",
+        description: "",
+        actionId: 1,
+        type: "D",
+        source: "preparePlatform",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "DisplayPreparePlatform",
+        postTaskDelay: 0
+    },
+    {
+        id: "DisplayApplyIngredients",
+        name: "Display Apply Ingredients",
+        description: "",
+        actionId: 1,
+        type: "D",
+        source: "applyIngredients",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "DisplayApplyIngredients",
+        postTaskDelay: 0
+    },
+    {
+        id: "DisplayFinalPreparation",
+        name: "Display Final Preparation",
+        description: "",
+        actionId: 1,
+        type: "D",
+        source: "finalPreparation",
+        destination: "",
+        duration: 0,
+        removeOnComplete: false,
+        removeDelay: 0,
+        messageId: "DisplayFinalPreparation",
+        postTaskDelay: 0
+    }
+    /*
     {
         id: "GetLoginPage",
         name: "Get Login Page",
@@ -25,7 +69,7 @@ var FlowTasks = [
         source: "clientBrowser",
         destination: "webServer",
         duration: 1500,
-        removeOnComplete: false,
+        removeOnComplete: true,
         removeDelay: 1000,
         messageId: "GetLoginPage",
         postTaskDelay: 0
@@ -464,4 +508,5 @@ var FlowTasks = [
         messageId: "TasksPageTaskAdded",
         postTaskDelay: 2000
     }
+    */
 ];

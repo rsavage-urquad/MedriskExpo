@@ -4,22 +4,27 @@
 var Entities = [
     {
         id: "webServer",
-        containerId: "webContainer"
+        containerId: "webContainer",
+        useFullContainer: false
     },
     {
         id: "dbServer",
-        containerId: "dbContainer"
+        containerId: "dbContainer",
+        useFullContainer: false
     },
     {
         id: "descriptionDisplay",
-        containerId: "controlCenter"
+        containerId: "controlCenter",
+        useFullContainer: false
     },
     {
         id: "clientBrowser",
-        containerId: "browserContainer"
+        containerId: "browserContainer",
+        useFullContainer: false
     },
     {
         id: "clientBrowserDisplay",
-        containerId: "browserDisplayContainer"
+        containerId: "browserDisplayContainer",
+        useFullContainer: false
     }
 ];

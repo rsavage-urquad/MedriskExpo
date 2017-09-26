@@ -71,8 +71,6 @@ body {
     width: 35px;
 }
 
-
-
 .msg-panel {
     background-color: white;
     border: solid 1px black;
@@ -86,6 +84,19 @@ body {
 .msg-title {
      font-size: 10px;
  }
+
+.msg-title-overview {
+    font-size: 16px;
+    background-color: mediumblue;
+    color: white;
+}
+
+.msg-title-functional-area {
+    font-size: 12px;
+    background-color: crimson;
+    color: white;
+}
+
 
 .msg-title-html {
     padding: 2px;
@@ -150,8 +161,8 @@ body {
     font-size: 8px;
 }
 
-.msg-body-browser {
-    font-size: 10px;
+.msg-body-overview {
+    font-size: 14px;
 }
 
 .msg-body-html {
