@@ -75,7 +75,7 @@ body {
     background-color: white;
     border: solid 1px black;
     margin: 0;
-    padding: 1px;
+    padding: 0;
     overflow: hidden;
     z-index: 1000;
     position: absolute;
@@ -91,11 +91,49 @@ body {
     color: white;
 }
 
-.msg-title-functional-area {
-    font-size: 12px;
+.msg-title-prepare-platform {
+    font-size: 16px;
     background-color: crimson;
     color: white;
 }
+
+.msg-title-apply-ingredients {
+    font-size: 16px;
+    background-color: forestgreen;
+    color: white;
+}
+
+.msg-title-final-preparation {
+    font-size: 16px;
+    background-color: indigo;
+    color: white;
+}
+
+
+
+
+
+
+.msg-body-overview {
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .msg-title-html {
@@ -159,10 +197,6 @@ body {
 
 .msg-body {
     font-size: 8px;
-}
-
-.msg-body-overview {
-    font-size: 14px;
 }
 
 .msg-body-html {

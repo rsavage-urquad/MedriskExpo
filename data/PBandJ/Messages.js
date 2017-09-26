@@ -21,51 +21,55 @@ var Messages = [
     {
         id: "DisplayPreparePlatform",
         height: 112,
-        width: 180,
+        width: 200,
         panelClass: "msg-panel",
-        title: "Prepare Platform",
-        titleClass: "msg-title-functional-area",
+        title: "PreparePlatform",
+        titleClass: "msg-title-prepare-platform",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
         "<ul style='padding-left: 20px;'>" +
         "<li>OpenPackaging()</li>" +
-        "<li>RemoveSlices(2)</li>" +
-        "<li>PlaceSlice(0, pbLoc)</li>" +
-        "<li>PlaceSlice(1, jellyLoc)</li>" +
+        "<li>RemoveElement(2)</li>" +
+        "<li>PlaceElement(0, pbLoc)</li>" +
+        "<li>PlaceElement(1, jellyLoc)</li>" +
         "</ul>",
         bodyClass: "msg-body-overview"
     },
     {
         id: "DisplayApplyIngredients",
-        height: 112,
-        width: 180,
+        height: 185,
+        width: 320,
         panelClass: "msg-panel",
-        title: "Prepare Platform",
-        titleClass: "msg-title-functional-area",
+        title: "ApplyIngredients",
+        titleClass: "msg-title-apply-ingredients",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
-        "<ul style='padding-left: 20px;'>" +
-        "<li>OpenPackaging()</li>" +
-        "<li>RemoveSlices(2)</li>" +
-        "<li>PlaceSlice(0, pbLoc)</li>" +
-        "<li>PlaceSlice(1, jellyLoc)</li>" +
-        "</ul>",
+            "<ul style='padding-left: 20px;'>" +
+            "<li>ProcessIngredient(peanutButter, pbLoc.elem)</li>" +
+            "<li>ProcessIngredient(jelly, jellyLoc.elem)</li>" +
+            "</ul>" +
+            "<div style='height: 1px; background-color: black;'></div>" +
+            "<div style='font-size: 12px; margin-top: 4px;'>" +
+            "<div>ProcessIngredient(ingredient, platform) {</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; OpenContainer(ingredient)</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; SpreadIngrident(knife, ingredient, platform)</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; CloseContainer(ingredient)</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; CleanAsset(knife)<br/>}</div>" +
+            "</div>",
         bodyClass: "msg-body-overview"
     },
     {
         id: "DisplayFinalPreparation",
-        height: 112,
-        width: 180,
+        height: 74,
+        width: 320,
         panelClass: "msg-panel",
-        title: "Prepare Platform",
-        titleClass: "msg-title-functional-area",
+        title: "FinalPreparation",
+        titleClass: "msg-title-final-preparation",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
         "<ul style='padding-left: 20px;'>" +
-        "<li>OpenPackaging()</li>" +
-        "<li>RemoveSlices(2)</li>" +
-        "<li>PlaceSlice(0, pbLoc)</li>" +
-        "<li>PlaceSlice(1, jellyLoc)</li>" +
+        "<li>AssembleProduct(pbLoc.elem, jellyLoc.elem)</li>" +
+        "<li>SliceProduct(start, end)</li>" +
         "</ul>",
         bodyClass: "msg-body-overview"
     },
