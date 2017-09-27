@@ -25,7 +25,7 @@ var FlowTasks = [
         source: "clientBrowser",
         destination: "webServer",
         duration: 1500,
-        removeOnComplete: false,
+        removeOnComplete: true,
         removeDelay: 1000,
         messageId: "GetLoginPage",
         postTaskDelay: 0

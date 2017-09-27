@@ -142,6 +142,18 @@ Message.prototype.display = function(loc, removeOnComplete, removeDelay) {
     }
 };
 
+/**
+ * remove() - Handles a Remove task by removing a message, optionally, after
+ * a specified delay.
+ * @param {number} removeDelay - Time to delay (ms)
+ */
+Message.prototype.remove = function(removeDelay) {
+    var realThis = this;
+
+    setTimeout(function() {
+        realThis.panelObj.remove();
+    }, removeDelay);
+};
 
 // ************************************************************************************************
 // Helpers Section

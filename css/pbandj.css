@@ -81,6 +81,16 @@ body {
     position: absolute;
 }
 
+.msg-panel-dim {
+    background-color: gainsboro;
+    border: solid 1px black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 1000;
+    position: absolute;
+}
+
 .msg-title {
      font-size: 10px;
  }
@@ -111,14 +121,17 @@ body {
 
 
 
-
-
-
 .msg-body-overview {
     font-size: 14px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
-
+.msg-body-pseudo-code {
+    font-size: 12px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
 
 
 

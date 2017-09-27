@@ -22,8 +22,8 @@ var PBandJ = function () {
     this.preparePlatform = $("#preparePlatform");
     this.applyIngredients = $("#applyIngredients");
     this.finalPreparation = $("#finalPreparation");
-    this.pseudoCodeContainer = $("#pseudoCodeContainer");
-    this.currActivityContainer = $("#currActivityContainer");
+    this.pseudoCodeContainer = $("#pseudoCode");
+    this.currActivityContainer = $("#currActivity");
 
     this.playMode = false;
 

@@ -11,28 +11,24 @@ var Messages = [
         titleClass: "msg-title-overview",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
-        "<ul style='padding-left: 20px;'>" +
-        "<li>PreparePlatform()</li>" +
-        "<li>ApplyIngredients()</li>" +
-        "<li>FinalPreparation()</li>" +
-        "</ul>",
+        "<div>PreparePlatform()</div>" +
+        "<div>ApplyIngredients()</div>" +
+        "<div>FinalPreparation()</div>",
         bodyClass: "msg-body-overview"
     },
     {
         id: "DisplayPreparePlatform",
         height: 112,
-        width: 200,
+        width: 250,
         panelClass: "msg-panel",
         title: "PreparePlatform",
         titleClass: "msg-title-prepare-platform",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
-        "<ul style='padding-left: 20px;'>" +
-        "<li>OpenPackaging()</li>" +
-        "<li>RemoveElement(2)</li>" +
-        "<li>PlaceElement(0, pbLoc)</li>" +
-        "<li>PlaceElement(1, jellyLoc)</li>" +
-        "</ul>",
+        "<div>OpenPackaging()</div>" +
+        "<div><span style='color: blue; font-style: italic;'>elem[]</span> = RemoveElement(2)</div>" +
+        "<div>PlaceElement(<span style='color: blue; font-style: italic;'>elem[0]</span>, <span style='color: blue; font-style: italic;'>pbLoc</span>)</div>" +
+        "<div>PlaceElement(<span style='color: blue; font-style: italic;'>elem[1]</span>, <span style='color: blue; font-style: italic;'>jellyLoc</span>)</div>",
         bodyClass: "msg-body-overview"
     },
     {
@@ -44,17 +40,15 @@ var Messages = [
         titleClass: "msg-title-apply-ingredients",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
-            "<ul style='padding-left: 20px;'>" +
-            "<li>ProcessIngredient(peanutButter, pbLoc.elem)</li>" +
-            "<li>ProcessIngredient(jelly, jellyLoc.elem)</li>" +
-            "</ul>" +
+            "<div>ProcessIngredient(<span style='color: blue; font-style: italic;'>peanutButter</span>, <span style='color: blue; font-style: italic;'>pbLoc.elem</span>)</div>" +
+            "<div>ProcessIngredient(<span style='color: blue; font-style: italic;'>jelly</span>, <span style='color: blue; font-style: italic;'>jellyLoc.elem</span></div>" +
             "<div style='height: 1px; background-color: black;'></div>" +
             "<div style='font-size: 12px; margin-top: 4px;'>" +
-            "<div>ProcessIngredient(ingredient, platform) {</div>" +
-            "<div>&nbsp;&nbsp;&nbsp; OpenContainer(ingredient)</div>" +
-            "<div>&nbsp;&nbsp;&nbsp; SpreadIngrident(knife, ingredient, platform)</div>" +
-            "<div>&nbsp;&nbsp;&nbsp; CloseContainer(ingredient)</div>" +
-            "<div>&nbsp;&nbsp;&nbsp; CleanAsset(knife)<br/>}</div>" +
+            "<div>ProcessIngredient(<span style='color: blue; font-style: italic;'>ingredient</span>, <span style='color: blue; font-style: italic;'>platform</span>) {</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; OpenContainer(<span style='color: blue; font-style: italic;'>ingredient</span>)</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; SpreadIngrident(<span style='color: blue; font-style: italic;'>knife</span>, <span style='color: blue; font-style: italic;'>ingredient</span>, <span style='color: blue; font-style: italic;'>platform</span>)</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; CloseContainer(<span style='color: blue; font-style: italic;'>ingredient</span>)</div>" +
+            "<div>&nbsp;&nbsp;&nbsp; CleanAsset(<span style='color: blue; font-style: italic;'>knife</span>)<br/>}</div>" +
             "</div>",
         bodyClass: "msg-body-overview"
     },
@@ -67,12 +61,163 @@ var Messages = [
         titleClass: "msg-title-final-preparation",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
-        "<ul style='padding-left: 20px;'>" +
-        "<li>AssembleProduct(pbLoc.elem, jellyLoc.elem)</li>" +
-        "<li>SliceProduct(start, end)</li>" +
-        "</ul>",
+        "<div>AssembleProduct(<span style='color: blue; font-style: italic;'>pbLoc.elem</span>, <span style='color: blue; font-style: italic;'>jellyLoc.elem</span>)</div>" +
+        "<div>SliceProduct(<span style='color: blue; font-style: italic;'>start</span>, <span style='color: blue; font-style: italic;'>end</span>)</div>",
         bodyClass: "msg-body-overview"
     },
+
+    /*  Prepare Platform */
+    {
+        id: "OverviewHighlightPreparePlatform",
+        height: 94,
+        width: 180,
+        panelClass: "msg-panel",
+        title: "Main Process",
+        titleClass: "msg-title-overview",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+        "<div style='background-color: #D1E3FD;'>PreparePlatform()</div>" +
+        "<div>ApplyIngredients()</div>" +
+        "<div>FinalPreparation()</div>",
+        bodyClass: "msg-body-overview"
+    },
+    {
+        id: "PreparePlatformHighlightOpenPackage",
+        height: 112,
+        width: 250,
+        panelClass: "msg-panel",
+        title: "PreparePlatform",
+        titleClass: "msg-title-prepare-platform",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+        "<div style='background-color: #FFCED7;'>OpenPackaging()</div>" +
+        "<div><span style='color: blue; font-style: italic;'>elem[]</span> = RemoveElement(2)</div>" +
+        "<div>PlaceElement(<span style='color: blue; font-style: italic;'>elem[0]</span>, <span style='color: blue; font-style: italic;'>pbLoc</span>)</div>" +
+        "<div>PlaceElement(<span style='color: blue; font-style: italic;'>elem[1]</span>, <span style='color: blue; font-style: italic;'>jellyLoc</span>)</div>",
+        bodyClass: "msg-body-overview"
+    },
+    {
+        id: "OpenPackage",
+        height: 285,
+        width: 280,
+        panelClass: "msg-panel",
+        title: "OpenPackage()",
+        titleClass: "msg-title-prepare-platform",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+        "<div>if Fastener == Clip {</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp; Remove the clip" +
+        "<div>}</div>" +
+        "<div>else if Fastener == Twist Tie {</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp; <span style='color: blue; font-style: italic;'>direction</span> = counter-clockwise" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp; do while Twist Tie still attached to package {</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Twist tie in <span style='color: blue; font-style: italic;'>direction</span></div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if is Twist Tie getting tighter {</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style='color: blue; font-style: italic;'>direction</span> = clockwise</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp; }" +
+        "<div>}</div>" +
+        "<div>else {</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp; Rip the damn thing open already!" +
+        "<div>}</div>",
+        bodyClass: "msg-body-pseudo-code"
+    },
+    {
+        id: "Fasteners",
+        height: 192,
+        width: 250,
+        panelClass: "msg-panel",
+        title: "Fasteners",
+        titleClass: "msg-title-prepare-platform",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+         "<div style='text-align: center'><img src='assets/pbandj/Fasteners.jpg' class='asset-image' /></div>",
+        bodyClass: "msg-body-pseudo-code"
+    },
+    {
+        id: "PreparePlatformHighlightRemoveElement",
+        height: 112,
+        width: 250,
+        panelClass: "msg-panel",
+        title: "PreparePlatform",
+        titleClass: "msg-title-prepare-platform",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+        "<div>OpenPackaging()</div>" +
+        "<div style='background-color: #FFCED7;'><span style='color: blue; font-style: italic;'>elem[]</span> = RemoveElement(2)</div>" +
+        "<div>PlaceElement(<span style='color: blue; font-style: italic;'>elem[0]</span>, <span style='color: blue; font-style: italic;'>pbLoc</span>)</div>" +
+        "<div>PlaceElement(<span style='color: blue; font-style: italic;'>elem[1]</span>, <span style='color: blue; font-style: italic;'>jellyLoc</span>)</div>",
+        bodyClass: "msg-body-overview"
+    },
+    {
+        id: "RemoveElement",
+        height: 137,
+        width: 250,
+        panelClass: "msg-panel",
+        title: "RemoveElement(<span style='color: gold; font-style: italic;'>elementCount</span>)",
+        titleClass: "msg-title-prepare-platform",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+        "<div><span style='color: blue; font-style: italic;'>currElements</span> = 0 {</div>" +
+        "<div>do while <span style='color: blue; font-style: italic;'>currElements</span> < <span style='color: blue; font-style: italic;'>elementCount</span> {</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp; Retrieve element</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp; <span style='color: blue; font-style: italic;'>currElements</span> = <span style='color: blue; font-style: italic;'>currElements</span> + 1</div>" +
+        "<div>}</div>" +
+        "<div>return Retreived Elements</div>",
+        bodyClass: "msg-body-pseudo-code"
+    },
+    {
+        id: "RetrieveBread",
+        height: 192,
+        width: 250,
+        panelClass: "msg-panel",
+        title: "Retrieve 2 Slices of Bread",
+        titleClass: "msg-title-prepare-platform",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+        "<div style='text-align: center'><img src='assets/pbandj/RetrieveBread-trans.png' class='asset-image' /></div>",
+        bodyClass: "msg-body-pseudo-code"
+    },
+    {
+        id: "PreparePlatformHighlightPlaceElements",
+        height: 112,
+        width: 250,
+        panelClass: "msg-panel",
+        title: "PreparePlatform",
+        titleClass: "msg-title-prepare-platform",
+        titleTextClass: "",
+        body: "<div style='margin-top: 5px;'></div>" +
+        "<div>OpenPackaging()</div>" +
+        "<div><span style='color: blue; font-style: italic;'>elem[]</span> = RemoveElement(2)</div>" +
+        "<div style='background-color: #FFCED7;'>PlaceElement(<span style='color: blue; font-style: italic;'>elem[0]</span>, <span style='color: blue; font-style: italic;'>pbLoc</span>)</div>" +
+        "<div style='background-color: #FFCED7;'>PlaceElement(<span style='color: blue; font-style: italic;'>elem[1]</span>, <span style='color: blue; font-style: italic;'>jellyLoc</span>)</div>",
+        bodyClass: "msg-body-overview"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     {

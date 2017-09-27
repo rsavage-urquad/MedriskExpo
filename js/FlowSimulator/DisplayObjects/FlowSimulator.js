@@ -96,7 +96,7 @@ FlowSimulator.prototype.nextStep = function() {
     var message;
     var sourceCenter;
     var destCenter;
-    var start;
+    var start = 0;
     var end;
 
     this.currStep++;
@@ -109,21 +109,28 @@ FlowSimulator.prototype.nextStep = function() {
     flowTask = this.flowTaskArray[this.currStep];
     message = this.messageDict[flowTask.messageId];
 
-    // Determine the Display/Starting position
-    sourceCenter = this.entityDict[flowTask.action.source].getCenter();
-    start = this.computeCoordinate(sourceCenter, message.height, message.width);
+    // Determine the Display/Starting position (not needed for Remove)
+    if (flowTask.action.type !== "R") {
+        sourceCenter = this.entityDict[flowTask.action.source].getCenter();
+        start = this.computeCoordinate(sourceCenter, message.height, message.width);
+    }
 
     // Display or Animate the Message (and display the Description)
     this.displayDescription(flowTask.description);
-    if (flowTask.action.type === "D") {
-        // Display the Message
-        message.display(start, flowTask.action.removeOnComplete, flowTask.action.removeDelay);
-    }
-    else {
-        // Animate the message
-        destCenter = this.entityDict[flowTask.action.destination].getCenter();
-        end = this.computeCoordinate(destCenter, message.height, message.width);
-        message.animate(start, end, flowTask.action.duration, flowTask.action.removeOnComplete, flowTask.action.removeDelay);
+    switch (flowTask.action.type) {
+        case "D":
+            // Display the Message
+            message.display(start, flowTask.action.removeOnComplete, flowTask.action.removeDelay);
+            break;
+        case "R":
+            message.remove();
+            break;
+        default:
+            // Animate the message
+            destCenter = this.entityDict[flowTask.action.destination].getCenter();
+            end = this.computeCoordinate(destCenter, message.height, message.width);
+            message.animate(start, end, flowTask.action.duration, flowTask.action.removeOnComplete, flowTask.action.removeDelay);
+            break;
     }
 };
 
