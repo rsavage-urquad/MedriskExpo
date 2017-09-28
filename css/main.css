@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.spacer {
+    height: 30px;
+}
+
+ul {
+    padding-left: 50px;
+}
