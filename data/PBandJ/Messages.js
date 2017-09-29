@@ -159,7 +159,7 @@ var Messages = [
         titleClass: "msg-title-prepare-platform",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
-        "<div><span style='color: blue; font-style: italic;'>currElements</span> = 0 {</div>" +
+        "<div><span style='color: blue; font-style: italic;'>currElements</span> = 0 </div>" +
         "<div>do while <span style='color: blue; font-style: italic;'>currElements</span> < <span style='color: blue; font-style: italic;'>elementCount</span> {</div>" +
         "<div>&nbsp;&nbsp;&nbsp;&nbsp; Retrieve element</div>" +
         "<div>&nbsp;&nbsp;&nbsp;&nbsp; <span style='color: blue; font-style: italic;'>currElements</span> = <span style='color: blue; font-style: italic;'>currElements</span> + 1</div>" +

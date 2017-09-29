@@ -15,7 +15,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayOverview",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "DisplayPreparePlatform",
@@ -57,7 +57,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayFinalPreparation",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
 
     // Prepare Platform
@@ -87,7 +87,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "PreparePlatformHighlightOpenPackage",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "OpenPackage",
@@ -101,7 +101,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenPackage",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "Fasteners",
@@ -115,7 +115,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "Fasteners",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveOpenPackage",
@@ -143,7 +143,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "Fasteners",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "PreparePlatformHighlightRemoveElement",
@@ -171,7 +171,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "RemoveElement",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "RetrieveBread",
@@ -185,7 +185,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "RetrieveBread",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveRemoveElement",
@@ -213,7 +213,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "RetrieveBread",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "PreparePlatformHighlightPlaceElements",
@@ -227,7 +227,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "PreparePlatformHighlightPlaceElements",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "PlaceElement",
@@ -241,7 +241,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "PlaceElement",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "PlaceBread",
@@ -255,7 +255,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "PlaceBread",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemovePlaceElement",
@@ -283,7 +283,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "PlaceBread",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
 
     // Apply Ingredients - Peanut Butter
@@ -327,7 +327,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightOpenContainer",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "OpenContainer",
@@ -341,7 +341,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveOpenContainer",
@@ -355,7 +355,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "DisplayApplyIngredientsHighlightSpreadIngredient",
@@ -369,7 +369,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightSpreadIngredient",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "SpreadIngredient",
@@ -383,7 +383,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "SpreadIngredient",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "LoadPeanutButter",
@@ -425,7 +425,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "ApplyPeanutButter",
-        postTaskDelay: 0
+        postTaskDelay: 2000
     },
     {
         id: "RemoveSpreadIngredient",
@@ -453,7 +453,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "ApplyPeanutButter",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "DisplayApplyIngredientsHighlightCloseContainer",
@@ -467,7 +467,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "CloseContainer",
@@ -481,7 +481,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveCloseContainer",
@@ -495,7 +495,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "DisplayApplyIngredientsHighlightCleanAsset",
@@ -509,7 +509,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightCleanAsset",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "CleanAsset",
@@ -523,7 +523,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "CleanAsset",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveCleanAsset",
@@ -537,7 +537,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "CleanAsset",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
 
     // Apply Ingredients - Jelly
@@ -554,7 +554,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightOpenContainerJelly",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "OpenContainerJelly",
@@ -568,10 +568,10 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
-        id: "OpenContainerJelly",
+        id: "RemoveOpenContainerJelly",
         name: "Remove the Open Container Message",
         description: "",
         actionId: 1,
@@ -582,7 +582,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "DisplayApplyIngredientsHighlightSpreadIngredientJelly",
@@ -596,7 +596,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightSpreadIngredientJelly",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "SpreadIngredientJelly",
@@ -610,7 +610,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "SpreadIngredient",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "LoadJelly",
@@ -652,7 +652,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "ApplyJelly",
-        postTaskDelay: 0
+        postTaskDelay: 2000
     },
     {
         id: "RemoveSpreadIngredientJelly",
@@ -680,7 +680,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "ApplyJelly",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "DisplayApplyIngredientsHighlightCloseContainerJelly",
@@ -694,7 +694,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightCloseContainerJelly",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "CloseContainerJelly",
@@ -708,7 +708,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveCloseContainerJelly",
@@ -722,7 +722,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "OpenCloseContainer",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "DisplayApplyIngredientsHighlightCleanAssetJelly",
@@ -736,7 +736,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayApplyIngredientsHighlightCleanAssetJelly",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "CleanAssetJelly",
@@ -750,7 +750,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "CleanAsset",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveCleanAssetJelly",
@@ -764,7 +764,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "CleanAsset",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
 
     // Final Preparation
@@ -809,7 +809,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayFinalPreparationHighlightAssembleProduct",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "AssembleProduct",
@@ -823,7 +823,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "AssembleProduct",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "AssembledSandwich",
@@ -837,7 +837,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "AssembledSandwich",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveAssembleProduct",
@@ -865,7 +865,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "AssembledSandwich",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "DisplayFinalPreparationHighlightSliceProduct",
@@ -879,7 +879,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "DisplayFinalPreparationHighlightSliceProduct",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "SliceProduct",
@@ -893,7 +893,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "SliceProduct",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
     {
         id: "SlicedSandwich",
@@ -907,7 +907,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "SlicedSandwich",
-        postTaskDelay: 0
+        postTaskDelay: 3000
     },
     {
         id: "RemoveSliceProduct",
@@ -935,7 +935,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "SlicedSandwich",
-        postTaskDelay: 0
+        postTaskDelay: 500
     },
 
     // Completed
@@ -980,7 +980,7 @@ var FlowTasks = [
         removeOnComplete: false,
         removeDelay: 0,
         messageId: "SandwichCompleted",
-        postTaskDelay: 0
+        postTaskDelay: 5000
     }
 
 
