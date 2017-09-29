@@ -1,24 +1,30 @@
 /**
- * WebDevelopment.js
+ * PBandJ.js
  * Author: Roland Savage
  * (c) 2017 - Roland Savage
  */
 
-var webDevelopment = null;
+var pbandj = null;
 
 $(document).ready(function () {
     $.ajaxSetup({ cache: false });
-    webDevelopment = new WebDevelopment();
+    pbandj = new PBandJ();
 });
 
 /**
  * WebDevelopment Object - Processing object for the Web Development Demonstration page.
  * @constructor
  */
-var WebDevelopment = function () {
+var PBandJ = function () {
     this.flowSimulator = null;
-    this.serverTier = $("#serverTier");
-    this.clientTier = $("#clientTier");
+    this.mainContainer = $("#mainContainer");
+    this.overview = $("#overview");
+    this.preparePlatform = $("#preparePlatform");
+    this.applyIngredients = $("#applyIngredients");
+    this.finalPreparation = $("#finalPreparation");
+    this.pseudoCodeContainer = $("#pseudoCode");
+    this.currActivityContainer = $("#currActivity");
+
     this.playMode = false;
 
     // Windows Resize Support
@@ -36,7 +42,7 @@ var WebDevelopment = function () {
 /**
  * initialize() - Prepare various page objects/elements.
  */
-WebDevelopment.prototype.initialize = function() {
+PBandJ.prototype.initialize = function() {
     var realThis = this;
 
     // Load the Entities, Tasks and Messages
@@ -73,7 +79,7 @@ WebDevelopment.prototype.initialize = function() {
 /**
  * priorClicked() - Handle the "Prior" button click.  If flow is "playing" it will be stopped.
  */
-WebDevelopment.prototype.priorClicked = function() {
+PBandJ.prototype.priorClicked = function() {
     if (this.playMode) {
         this.playStopClicked();
     }
@@ -83,7 +89,7 @@ WebDevelopment.prototype.priorClicked = function() {
 /**
  * nextClicked() - Handle the "Next" button click.  If flow is "playing" it will be stopped.
  */
-WebDevelopment.prototype.nextClicked = function() {
+PBandJ.prototype.nextClicked = function() {
     if (this.playMode) {
         this.playStopClicked();
     }
@@ -93,7 +99,7 @@ WebDevelopment.prototype.nextClicked = function() {
 /**
  * playStopClicked() - Handle the "Play/Stop" button click.
  */
-WebDevelopment.prototype.playStopClicked = function() {
+PBandJ.prototype.playStopClicked = function() {
     this.playMode = !this.playMode;
     this.updatePlayStopButton();
     this.flowSimulator.playMode = this.playMode;
@@ -105,7 +111,7 @@ WebDevelopment.prototype.playStopClicked = function() {
 /**
  * restartClicked() - Handle the Restart click.
  */
-WebDevelopment.prototype.restartClicked = function() {
+PBandJ.prototype.restartClicked = function() {
     if (this.playMode) {
         this.playStopClicked();
     }
@@ -121,7 +127,7 @@ WebDevelopment.prototype.restartClicked = function() {
  * can be refactored to retrieve from server.
  * @returns {Array} Populated Entity Array
  */
-WebDevelopment.prototype.loadEntities = function() {
+PBandJ.prototype.loadEntities = function() {
     var entityArray = [];
 
     _.forEach(Entities, function(item) {
@@ -136,7 +142,7 @@ WebDevelopment.prototype.loadEntities = function() {
  * can be refactored to retrieve from server.
  * @returns {Array} Populated Flow Task Array
  */
-WebDevelopment.prototype.loadFlowTasks = function() {
+PBandJ.prototype.loadFlowTasks = function() {
     var flowTaskArray = [];
 
     _.forEach(FlowTasks, function(item) {
@@ -152,7 +158,7 @@ WebDevelopment.prototype.loadFlowTasks = function() {
  * can be refactored to retrieve from server.
  * @returns {Array} Populated Messages Array
  */
-WebDevelopment.prototype.loadMessages = function() {
+PBandJ.prototype.loadMessages = function() {
     var messageArray = [];
 
     _.forEach(Messages, function(item) {
@@ -170,7 +176,7 @@ WebDevelopment.prototype.loadMessages = function() {
 /**
  * updatePlayStopButton() - Update the display and state of the Play/Stop button.
  */
-WebDevelopment.prototype.updatePlayStopButton = function() {
+PBandJ.prototype.updatePlayStopButton = function() {
     var playStopButtonObj = $("#playStopButton");
     var playStopIconObj = $("<i class='fa'>");
     var icon = (!this.playMode) ? "fa-hourglass" : "fa-stop";
@@ -189,7 +195,7 @@ WebDevelopment.prototype.updatePlayStopButton = function() {
 /**
  * stopCompleted() - Callback function to be called when Flow simulator has stopped it processing.
  */
-WebDevelopment.prototype.stopCompleted = function() {
+PBandJ.prototype.stopCompleted = function() {
     var playStopButtonObj = $("#playStopButton");
     var playStopIconObj = $("<i class='fa'>");
     var icon = "fa-play";
@@ -211,7 +217,7 @@ WebDevelopment.prototype.stopCompleted = function() {
  * recompute their area.
  * @param realThis {object} - pointer the real "this" object.
  */
-WebDevelopment.prototype.resizeEnd = function(realThis) {
+PBandJ.prototype.resizeEnd = function(realThis) {
     if (new Date() - realThis.resizeTime < realThis.resizeDelta) {
         setTimeout(
             function() {
@@ -227,18 +233,58 @@ WebDevelopment.prototype.resizeEnd = function(realThis) {
 /**
  * processResize() - Process a resize occurrence.
  */
-WebDevelopment.prototype.processResize = function() {
+PBandJ.prototype.processResize = function() {
     // Recalculate Heights
     var winHeight = window.innerHeight;
-    var bannerHeight = $("#banner").outerHeight();
-    var networkHeight = $("#network").outerHeight();
-    var tierHeight = Math.floor((winHeight - (bannerHeight + networkHeight)) / 2);
+    var bannerHeight = $("#banner").outerHeight(true);
+    var rowHeight = winHeight - bannerHeight;
+    var halfHeight = Math.floor(rowHeight / 2);
 
-    // Reset Tier Sized
-    this.serverTier.outerHeight(tierHeight);
-    this.clientTier.outerHeight(tierHeight);
+    // Reset the main area sizes
+    this.mainContainer.outerHeight(rowHeight);
+
+    // Set the heights of the items in Column 1
+    var overviewDivHeight = $("#overviewDiv").height();
+    var overviewHeadHeight = $("#overviewHead").outerHeight(true);
+    var overviewSectionHeight = Math.floor((overviewDivHeight - overviewHeadHeight) / 4);
+    this.overview.outerHeight(overviewSectionHeight);
+    this.preparePlatform.outerHeight(overviewSectionHeight);
+    this.applyIngredients.outerHeight(overviewSectionHeight);
+    this.finalPreparation.outerHeight(overviewSectionHeight);
+
+    // Set the heights of the items in Column 2
+    $("#assetDiv").outerHeight(halfHeight);
+    var assetHeadHeight = $("#assetHead").outerHeight(true);
+    var assetHeight = (halfHeight - assetHeadHeight) - 2;
+    $("#assets").outerHeight(assetHeight);
+    this.resizeImages("assets");
+    $("#pseudoCodeDiv").outerHeight(halfHeight);
+    var pseudoCodeHeadHeight = $("#pseudoCodeHead").outerHeight(true);
+    var pseudoCodeHeight = (halfHeight - pseudoCodeHeadHeight) - 2;
+    this.pseudoCodeContainer.outerHeight(pseudoCodeHeight);
+
+    // Set the heights of the items in Column 3
+    $("#descriptionDiv").outerHeight(halfHeight);
+    var descHeadHeight = $("#descriptionHead").outerHeight(true);
+    var descHeight = (halfHeight - descHeadHeight) - 2;
+    $("#descriptionDisplay").outerHeight(descHeight);
+    $("#activityDiv").outerHeight(halfHeight);
+    var activityHeadHeight = $("#activityHead").outerHeight(true);
+    var activityHeight = (halfHeight - activityHeadHeight) - 2;
+    this.currActivityContainer.outerHeight(activityHeight);
 
     // Notify Flow Simulator
     this.flowSimulator.processResize();
     this.flowSimulator.reinitializeRequestReceived();
+};
+
+PBandJ.prototype.resizeImages = function(assetAreaId) {
+    var areaObj = $("#" + assetAreaId);
+    var height = areaObj.height();
+    var width = areaObj.height();
+
+    if (height < 320) {
+        // TODO: RS - Need to resize as needed
+    }
+
 };

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medrisk Expo 2017 - Peanut Butter and Jelly</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/pbandj.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row banner" id="banner">
+        <div class="col-md-12"><h2>MedRisk Expo 2017 - Peanut Butter and Jelly</h2></div>
+    </div>
+    <div class="row" id="mainContainer">
+        <div class="col-md-4 func-decomp" id="overviewDiv">
+            <h3 id="overviewHead">Overview</h3>
+            <div id="overview"></div>
+            <div id="preparePlatform"></div>
+            <div id="applyIngredients"></div>
+            <div id="finalPreparation"></div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="row assets-area" id="assetDiv">
+                <div class="col-md-12">
+                    <h3 id="assetHead">Assets</h3>
+                    <div id="assets" class="centered">
+                        <div class="asset-item"><img src="assets/pbandj/AssetBread-trans.png" class="asset-image" /></div>
+                        <div class="asset-item"><img src="assets/pbandj/AssetKnife-trans.png" class="asset-image" /></div>
+                        <div class="asset-sep"></div>
+                        <div class="asset-item"><img src="assets/pbandj/AssetPeanutButter-trans.png" class="asset-image" /></div>
+                        <div class="asset-item"><img src="assets/pbandj/AssetJelly-trans.png" class="asset-image" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pseudo-code" id="pseudoCodeDiv">
+                <div class="col-md-12">
+                    <h3 id="pseudoCodeHead">Pseudo-Code</h3>
+                    <div id="pseudoCode"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row description-row" id="descriptionDiv">
+                <div class="col-md-12">
+                    <div class="row full-height" id="descriptionHead">
+                        <div class="col-md-6">
+                            <h3>Control Center</h3>
+                        </div>
+                        <div class="col-md-6 button-col">
+                            <button class="btn btn-default btn-fixed" onclick="pbandj.restartClicked()"><i class="fa fa-fast-backward"></i></button>
+                            <button class="btn btn-default btn-fixed" onclick="pbandj.priorClicked()"><i class="fa fa-step-backward"></i></button>
+                            <button class="btn btn-default btn-fixed" onclick="pbandj.nextClicked()"><i class="fa fa-step-forward"></i></button>
+                            <button class="btn btn-default btn-fixed" id="playStopButton" onclick="pbandj.playStopClicked()"><i class="fa fa-play" id="playStopIcon"></i></button>
+
+                        </div>
+                    </div>
+                    <ul id="descriptionDisplay" class="description-area"></ul>
+                </div>
+            </div>
+            <div class="row curr-activity" id="activityDiv" >
+                <div class="col-md-12">
+                    <h3 id="activityHead">Current Activity</h3>
+                    <div id="currActivity"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/lodash.js"></script>
+<script src="data/PBandJ/Entities.js"></script>
+<script src="data/PBandJ/Messages.js"></script>
+<script src="data/PBandJ/FlowTasks.js"></script>
+<script src="js/FlowSimulator/DisplayObjects/Message.js"></script>
+<script src="js/FlowSimulator/DataObjects/Coordinate.js"></script>
+<script src="js/FlowSimulator/DataObjects/EntityObject.js"></script>
+<script src="js/FlowSimulator/DataObjects/FlowTask.js"></script>
+<script src="js/FlowSimulator/DataObjects/ActionObject.js"></script>
+<script src="js/FlowSimulator/DisplayObjects/FlowSimulator.js"></script>
+<script src="js/PBandJ/PBandJ.js"></script>
+
+</html>
