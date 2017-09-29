@@ -303,22 +303,22 @@ var Messages = [
         height: 236,
         width: 325,
         panelClass: "msg-panel",
-        title: "SpreadIngredient(<span style='color: gold; font-style: italic;'>tool</span>, <span style='color: gold; font-style: italic;'>ingredent</span>, <span style='color: gold; font-style: italic;'>platform</span>)",
+        title: "SpreadIngredient(<span style='color: gold; font-style: italic;'>tool</span>, <span style='color: gold; font-style: italic;'>ingredient</span>, <span style='color: gold; font-style: italic;'>platform</span>)",
         titleClass: "msg-title-apply-ingredients",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
-        "<div>LoadIngredient(<span style='color: blue; font-style: italic;'>tool</span>, <span style='color: blue; font-style: italic;'>ingredent</span>, <span style='color: blue; font-style: italic;'>platform</span>)</div>" +
+        "<div>LoadIngredient(<span style='color: blue; font-style: italic;'>tool</span>, <span style='color: blue; font-style: italic;'>ingredient</span>, <span style='color: blue; font-style: italic;'>platform</span>)</div>" +
         "<div>do while <span style='color: blue; font-style: italic;'>ingredient</span> not coating face of <span style='color: blue; font-style: italic;'>platform</span> {</div>" +
         "<div>&nbsp;&nbsp;&nbsp; spread <span style='color: blue; font-style: italic;'>ingredient</span> on <span style='color: blue; font-style: italic;'>platform</span></div>" +
         "<div>&nbsp;&nbsp;&nbsp; if insufficient <span style='color: blue; font-style: italic;'>ingredient</span> {</div>" +
-        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LoadIngredient(<span style='color: blue; font-style: italic;'>tool</span>, <span style='color: blue; font-style: italic;'>ingredent</span>, <span style='color: blue; font-style: italic;'>platform</span>)</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LoadIngredient(<span style='color: blue; font-style: italic;'>tool</span>, <span style='color: blue; font-style: italic;'>ingredient</span>, <span style='color: blue; font-style: italic;'>platform</span>)</div>" +
         "<div>&nbsp;&nbsp;&nbsp; }</div>" +
         "<div>}</div>" +
         "<div style='height: 1px; background-color: black;'></div>" +
-        "<div>LoadIngredient(<span style='color: blue; font-style: italic;'>tool</span>, <span style='color: blue; font-style: italic;'>ingredent</span>, <span style='color: blue; font-style: italic;'>platform</span>) {</div>"+
-        "<div>&nbsp;&nbsp;&nbsp; Insert <span style='color: blue; font-style: italic;'>tool</span> in <span style='color: blue; font-style: italic;'>ingredent</span></div>" +
-        "<div>&nbsp;&nbsp;&nbsp; Load <span style='color: blue; font-style: italic;'>tool</span> with <span style='color: blue; font-style: italic;'>ingredent</span></div>" +
-        "<div>&nbsp;&nbsp;&nbsp; Apply <span style='color: blue; font-style: italic;'>ingredent</span> to <span style='color: blue; font-style: italic;'>platform</span></div>" +
+        "<div>LoadIngredient(<span style='color: blue; font-style: italic;'>tool</span>, <span style='color: blue; font-style: italic;'>ingredient</span>, <span style='color: blue; font-style: italic;'>platform</span>) {</div>"+
+        "<div>&nbsp;&nbsp;&nbsp; Insert <span style='color: blue; font-style: italic;'>tool</span> in <span style='color: blue; font-style: italic;'>ingredient</span></div>" +
+        "<div>&nbsp;&nbsp;&nbsp; Load <span style='color: blue; font-style: italic;'>tool</span> with <span style='color: blue; font-style: italic;'>ingredient</span></div>" +
+        "<div>&nbsp;&nbsp;&nbsp; Apply <span style='color: blue; font-style: italic;'>ingredient</span> to <span style='color: blue; font-style: italic;'>platform</span></div>" +
         "<div>}</div>",
         bodyClass: "msg-body-pseudo-code"
     },
