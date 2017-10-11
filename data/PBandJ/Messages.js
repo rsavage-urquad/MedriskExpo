@@ -328,7 +328,7 @@ var Messages = [
         width: 250,
         panelClass: "msg-panel",
         title: "Load Peanut Butter",
-        titleClass: "msg-title-prepare-platform",
+        titleClass: "msg-title-apply-ingredients",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
         "<div style='text-align: center'><img src='assets/pbandj/LoadPeanutButter.jpg' class='asset-image' /></div>",
@@ -340,7 +340,7 @@ var Messages = [
         width: 250,
         panelClass: "msg-panel",
         title: "Apply Peanut Butter",
-        titleClass: "msg-title-prepare-platform",
+        titleClass: "msg-title-apply-ingredients",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
         "<div style='text-align: center'><img src='assets/pbandj/BreadWithPeanutButter.jpg' class='asset-image' /></div>",
@@ -457,7 +457,7 @@ var Messages = [
         width: 250,
         panelClass: "msg-panel",
         title: "Load Jelly",
-        titleClass: "msg-title-prepare-platform",
+        titleClass: "msg-title-apply-ingredients",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
         "<div style='text-align: center'><img src='assets/pbandj/LoadJelly.jpg' class='asset-image' /></div>",
@@ -469,7 +469,7 @@ var Messages = [
         width: 250,
         panelClass: "msg-panel",
         title: "Apply Jelly",
-        titleClass: "msg-title-prepare-platform",
+        titleClass: "msg-title-apply-ingredients",
         titleTextClass: "",
         body: "<div style='margin-top: 5px;'></div>" +
         "<div style='text-align: center'><img src='assets/pbandj/BreadWithJelly.jpg' class='asset-image' /></div>",
